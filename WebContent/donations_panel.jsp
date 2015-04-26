@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page session = "true" %>
+<jsp:useBean id="pbean" scope="session" class="com.information.personal.PersonalBean"/>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,33 +25,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="index.html" class="navbar-brand">People Helping People</a>
+            <a href="index.html" class="navbar-brand" class="transition">People Helping People</a>
         </div>
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#contactUs">Contact Us</a></li>
+                <li><a href="index.html" class="transition">Home</a></li>
+                <li><a href="index.html#about" class="transition">About</a></li>
+                <li><a href="index.html#contactUs" class="transition">Contact Us</a></li>
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Projects <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
-                        <li><a href="Projects/project_1.html">Project 1</a></li>
-                        <li><a href="Projects/project_2.html">Project 2</a></li>
-                        <li><a href="Projects/project_3.html">Project 3</a></li>
-                        <!--<li class="divider"></li>
-                        <li><a href="#">Trash</a></li>-->
+                        <li><a href="Projects/project_1.html" class="transition">Pre Membership and Orientation Seminar</a></li>
+                        <li><a href="Projects/project_2.html" class="transition">Adopted Families' Tambo Making Project</a></li>
+                        <li><a href="PROJECTS/project_3.html" class="transition">Project 3</a></li>
                     </ul>
                 </li>
-                <li><a href="donate.html">Donate</a></li>
+                <li><a href="donate.html" class="transition">Donate</a></li>
             </ul>
-            <!--<form role="search" class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" placeholder="Search" class="form-control">
-                </div>
-            </form>-->
              <ul class="nav navbar-nav navbar-right">
-            	<li id='loginSpace_admin' class='hidden'>
+            	<li id='loginSpace_admin' class='visible'>
                 	<div class='container-fluid'>
                         <div class='row'>
                             <div class='col-xs-12'>
@@ -70,7 +67,7 @@
                 	</div>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right " id='loginSpace'>
+            <ul class="nav navbar-nav navbar-right hidden" id='loginSpace'>
                 <li id='bLogin' onclick='logn()'><a href='javascript:void(0)'>Login</a></li>
                 <li id='aOr' class='hidden-xs hidden-sm' style='margin-left: -20px;margin-right: -20px;'><a href='javascript:void(0)'>or</a></li>
                 <li id='sgnUp'><a href='sign_up.html'>Sign Up!</a></li>
@@ -78,10 +75,10 @@
                 
                 	<div class='row'>
 						<div class='col-xs-9 col-xs-offset-1'>
-                            <form action="ConfirmInformation" method="post">
+                            <form onSubmit='return showPanel()'>
                               <div class="form-group">
-                                <input type="userID" class="form-control" id="loginInput_1" placeholder="User ID" name="username">
-                                <input type="password" class="form-control" id="loginInput_2" placeholder="Password" name="password">
+                                <input type="userID" class="form-control" id="loginInput_1" placeholder="User ID">
+                                <input type="password" class="form-control" id="loginInput_2" placeholder="Password">
                               </div>
                         </div>
                         <div class='col-xs-1'>
@@ -98,9 +95,11 @@
         </div>
     </nav> 
 
+	<br /><br /><br />
+    
     <div class='container-fluid'>
     	<div class='container'>
-        	<div class='row vwContent'>
+        	<div class='row'>
             	<br/>
            		<br/>
 				<div class='row'>
@@ -115,11 +114,11 @@
                                 <h4>E-Mail Address: </h4>
                             </div>
                             <div class='col-md-5 text-left'>
-                            	<h4>[Last Name], [First Name] [Middle Initial]</h4>
-                                <h4>[USER_ID]</h4>
-                                <h4>[Number]</h4>
-                                <h4>[MailAdd]</h4>
-                                <h4>[E-Mail]</h4>
+                            	<h4>${pbean.lastName }, ${pbean.firstName } ${pbean.middleName}</h4>
+                                <h4> ${cookie.username.value} </h4>
+                                <h4>${pbean.phoneNumber }</h4>
+                                <h4>${pbean.address }</h4>
+                                <h4>${pbean.email }</h4>
                             </div>
                              <div class='col-md-3 text-left'>
                             	<h4>Joined On: </h4>
@@ -136,15 +135,15 @@
                         <div class='row text-center bg-success hidden-md hidden-lg'>
 							<div class='col-md-12'>
                             	<h4>Name: </h4>
-                                <h6>[Last Name], [First Name] [Middle Initial]</h6>
+                                <h6>${pbean.lastName }, ${pbean.firstName } ${pbean.middleName}</h6>
                                 <h4>Used ID: </h4>
-                                <h6>[USER_ID]</h6>
+                                <h6>${pbean.username }</h6>
                                 <h4>Contact Number: </h4>
-                                <h6>[Number]</h6>
+                                <h6>${pbean.phoneNumber }</h6>
                                 <h4>Mailing Address: </h4>
-                                <h6>[MailAdd]</h6>
+                                <h6>${pbean.address }</h6>
                                 <h4>E-Mail Address: </h4>
-                                <h6>[E-Mail]</h6>
+                                <h6>${pbean.email }</h6>
                             </div>                            
                         </div>
                         <div class='row text-center bg-success hidden-md hidden-lg'>
@@ -235,43 +234,76 @@
                     </div>
                 </div>
 			</div>
-			<div class='hidden-md hidden-lg'>
-            	<br style='margin-top: 150vh;' />
-            </div>
-            <div class='row vwContent'>
+            	<br style='margin-top: 3vh;' />
+            <div class='row'>
             	<div class='row'>
                 	<div class='col-xs-12'>
                     	<p class='text-info text-center'>
-                        	Maecenas vulputate malesuada ligula, at maximus orci consequat in. Nam consectetur vulputate velit, vel pretium metus ultricies sed. Vivamus urna metus, ultrices a est at, vehicula molestie diam. Nullam varius commodo eros a porttitor. Etiam congue eu purus eget finibus. Nam augue orci, feugiat vehicula porttitor eu, lobortis quis ante. Curabitur luctus neque vitae enim viverra sodales a eget lacus. Morbi ante orci, vehicula eu nibh sit amet, eleifend placerat quam. Etiam et bibendum nulla. Cras nec metus sapien. Sed ligula libero, aliquet a consequat sit amet, mattis eu libero. Quisque at dolor sodales nibh feugiat faucibus ornare et felis. Nulla molestie porta lacus pretium tempor. Duis scelerisque erat vel rhoncus laoreet. Nam enim ante, posuere nec tincidunt a, molestie a nisi. Aliquam volutpat odio eros, at pulvinar lectus hendrerit in. 
+                        	The table above shows all donation transactions you have made from the beginning. Be sure to track where your donations went
                         </p>
                     </div>
                 </div>
+                	<br style='margin-top: 3vh;' />
                 <div class='row'>
                 	<div class='col-md-7'>
-                    	<img src='MEDIA/IMAGES/727x519.png' class='img-responsive'/>
+                    	<img src='../MEDIA/IMAGES/727x519.png' class='img-responsive'/>
                     </div>
                     <div class='col-md-5'>
-                    	<img src='MEDIA/IMAGES/727x519.png' class='img-responsive'/>
+                    	<img src='../MEDIA/IMAGES/727x519.png' class='img-responsive'/>
                         <p class='text-center'>
-                        	Sed consectetur urna orci, eget bibendum purus fringilla in. Donec sit amet efficitur turpis. Sed nibh lacus, dapibus et ante in, dapibus sodales mauris. Duis tincidunt quis orci at blandit. Vivamus id gravida tellus. Morbi varius, erat quis tincidunt rhoncus, enim justo lacinia eros, ac malesuada mi lectus ut augue. Duis bibendum neque ac arcu dapibus tempus. Donec venenatis feugiat arcu, eget volutpat urna egestas sed. Sed volutpat mollis sapien, quis ornare felis malesuada sit amet. 
+                        	The images show the statatistics of the frequency and amount of donation you have made
                         </p>
                     </div>
                 </div>	
             </div>
   		</div>
     </div>
+    
+    <br style='margin-top: 3vh;' />
         
-<div id="footer">
-  <div class="container">
-    <p class="text-muted"><em>Web User Interfaced designed by <a href="http://www.facebook.com/whenlegendbegins">Kyle Cancio</a></em></p>
-  </div>
-</div>
-
+<div class="footer container-fluid">
+	<div class='row'>
+    	<div class='col-md-3 col-md-offset-1'>
+			<h4>
+            	People Helping People Foundation is a non-profit organization based on the Philippines
+            </h4>
+        </div>
+        <div class='col-md-1 hidden-xs hidden-sm'>
+        	<h1> | </h1>
+        </div>
+    	<div class='col-md-2'>
+        	<h5>Find Us!</h5>
+            <address>
+              <strong>People Helping People Foundation</strong><br>
+				1611 Espanya Manila<br>
+				(63) 406-1611
+            </address>
+        </div>
+        <div class='col-md-1 hidden-xs hidden-sm'>
+        	<h1> | </h1>
+        </div>
+        <div class='col-md-4'>
+        	<h5>Powered by ProjectHDX</h5>
+			<h4>
+            	A joint web application project developed by:
+            </h4>
+            <ul class='list-unstyled'>
+                <li>Cabe, Gerlan Mark B.</li>
+            	<li>Cancio, Kyle Cedrick R.</li>
+               	<li>Rosalado, Isabela Marie C.</li>
+               	<li>Suarez, Jessie James P.</li>
+            </ul>
+            	
+                
+        </div>
+    </div>
+ </div>
 </body>
 	<script src='JS/jquery.js' type='text/javascript' /></script>
 	<script src="JS/jquery.viewportchecker.js"></script>
     <script src='JS/bootstrap.js' type='text/javascript' /></script>
     <script src='JS/custom_.js' type='text/javascript' /></script>
+    <script src="JS/jquery.nicescroll.js"></script>
 
 
 </html>
