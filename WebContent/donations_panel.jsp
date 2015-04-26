@@ -246,10 +246,10 @@
                 	<br style='margin-top: 3vh;' />
                 <div class='row'>
                 	<div class='col-md-7'>
-                    	<img src='../MEDIA/IMAGES/727x519.png' class='img-responsive'/>
+                    	<img src='MEDIA/IMAGES/727x519.png' class='img-responsive'/>
                     </div>
                     <div class='col-md-5'>
-                    	<img src='../MEDIA/IMAGES/727x519.png' class='img-responsive'/>
+                    	<img src='MEDIA/IMAGES/727x519.png' class='img-responsive'/>
                         <p class='text-center'>
                         	The images show the statatistics of the frequency and amount of donation you have made
                         </p>
