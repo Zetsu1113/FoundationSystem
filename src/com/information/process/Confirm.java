@@ -41,8 +41,6 @@ public class Confirm extends HttpServlet {
 				response.addCookie(password);
 				
 				if (page.equals("index.html"))
-					response.sendRedirect(page);
-				else if (page.equals("donations_panel.html"))
 				{
 					PersonalBean p = getInfo(user);
 					HttpSession session = request.getSession();
