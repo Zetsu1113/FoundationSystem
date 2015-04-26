@@ -60,13 +60,13 @@
             </ul>
             <ul class="nav navbar-nav navbar-right " id='loginSpace'>
                 <li id='bLogin' onclick='logn()'><a href='javascript:void(0)'>Login</a></li>
-                <li id='aOr' class='hidden-xs hidden-sm' style='margin-left: -20px;margin-right: -20px;'><a href='javascript:void(0)'>or</a></li>
-                <li id='sgnUp'><a href='sign_up.html'>Sign Up!</a></li>
+				<li id='aOr' class='hidden-xs hidden-sm' style='margin-left: -20px;margin-right: -20px;'><a href='javascript:void(0)'>or</a></li>                
+				<li id='sgnUp'><a href='sign_up.html'>Sign Up!</a></li>
                 <li id='aLogin' class='hidden'>
                 
                 	<div class='row'>
 						<div class='col-xs-9 col-xs-offset-1'>
-                            <form onSubmit='return showPanel()'>
+                            <form method="post" action="ConfirmInformation" onSubmit='return showPanel()'>
                               <div class="form-group">
                                 <input type="userID" class="form-control" id="loginInput_1" placeholder="User ID">
                                 <input type="password" class="form-control" id="loginInput_2" placeholder="Password">

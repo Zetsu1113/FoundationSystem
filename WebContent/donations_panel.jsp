@@ -61,7 +61,7 @@
                             <div class='col-xs-12'>
                                 <p style='margin-top: 1px;'><em>Welcome back,</em> <span id='navLink'>${cookie.username.value }</span>!</p>
                                 <p style='margin-top: -15px;'><em>Last active on</em> <span id='navLink'>date</span></p>
-                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='donations_panel.html'>Your Donations</a></span> | <span id='navLink'>Log Out!</span></p>
+                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='donations_panel.html'>Your Donations</a></span> | <span id='navLink'> Log Out! </span></p>
                             </div>
                         </div>
                 	</div>

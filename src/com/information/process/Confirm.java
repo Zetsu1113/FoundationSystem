@@ -39,8 +39,7 @@ public class Confirm extends HttpServlet {
 				Cookie password = new Cookie("password", user);
 				response.addCookie(username);
 				response.addCookie(password);
-				
-				if (page.equals("index.html"))
+				if (page.equals("index.html") || page.equals("FoundationSystem"))
 				{
 					PersonalBean p = getInfo(user);
 					HttpSession session = request.getSession();
@@ -107,7 +106,6 @@ public class Confirm extends HttpServlet {
 				break;
 		}
 		p.setAddress(rs.getString(2) + ", " + rs.getString(4) + ", " + rs.getString(5) + ", " + rs.getString(3));
-		System.out.println(p.getAddress());
 		return p;
 	}
 }

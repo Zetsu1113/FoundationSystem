@@ -40,7 +40,7 @@ function retVal(){
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="Projects/project_1.html" class="transition">Pre Membership and Orientation Seminar</a></li>
                         <li><a href="Projects/project_2.html" class="transition">Adopted Families' Tambo Making Project</a></li>
-                        <li><a href="PROJECTS/project_3.html" class="transition">Project 3</a></li>
+                        <li><a href="Projects/project_3.html" class="transition">Project 3</a></li>
                     </ul>
                 </li>
                 <li><a href="donate.html" class="transition">Donate</a></li>
@@ -71,7 +71,7 @@ function retVal(){
             </ul>
             <ul class="nav navbar-nav navbar-right " id='loginSpace'>
                 <li id='bLogin' onclick='logn()'><a href='javascript:void(0)'>Login</a></li>
-                <li id='aOr' class='hidden-xs hidden-sm' style='margin-left: -20px;margin-right: -20px;'></li>
+                <li id='aOr' class='hidden-xs hidden-sm' style='margin-left: -20px;margin-right: -20px;'><a href='javascript:void(0)'>or</a></li>
                 <li id='sgnUp'><a href='sign_up.html' class="transition">Sign Up!</a></li>
                 <li id='aLogin' class='hidden'>
                 
@@ -113,12 +113,15 @@ function retVal(){
                     </div>
                     <div class='row'>
                     	<div class='col-md-7 col-xs-12'>
-                        	<form method="post" action="informationTransfer">
+                        	<form method="post" action="informationTransfer" onsubmit="return validateSignUp()">
                             	<div class='row'>
                                 	<div class='col-md-6'>
                                     	<label for="username">User Name</label>
                                 		<input type="text" class="form-control" id="username" placeholder="User Name" name='username' required>
                                     </div>
+                                    <div class='col-md-6'>
+										<br><center><span  class="hidden" style="color: red;" id="UserNameCheckerInSignUp"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>Username must be no less than 3 characters and no more than 16 characters.</span></center>
+									</div>
                                 </div>
                                 <br />
                             	<div class='row'>
@@ -129,7 +132,9 @@ function retVal(){
                                 	<div class='col-md-6'>
                                     	<label for="firstName">Name</label>
                                    		<input type="text" class="form-control" id="firstName" placeholder="First Name" name='FirstName' required>
-                                    </div>                                                        
+                                    </div> 
+                                    <center><span  class="hidden" style="color: red;" id="NameCheckerInSignUp"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>Names must only contain alphabets.</span></center>									
+                                                                                           
                                 </div>
                                 <br />
                                 <div class='row'>
@@ -141,6 +146,8 @@ function retVal(){
                                     	<label for="firstName">Confirm E-Mail</label>
                                     	<input type="email" class="form-control" id="email_2" placeholder="Confirm E-Mail Address" required>
                                     </div>
+                                    <center><span  class="hidden" style="color: red;" id="eMailCheckerInSignUp"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>Emails don't match</span></center>
+  
                                 </div>
                                 <br />
                                 <div class='row'>
@@ -152,6 +159,8 @@ function retVal(){
                                     	<label for="firstName">Confirm Password</label>
                                     	<input type="password" class="form-control" id="password_2" placeholder="Confirm Password" required>
                                     </div>
+                                    <center><span  class="hidden" style="color: red;" id="passwordCheckerInSignUp"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>Passwords don't match</span></center>
+									
                                 </div>
                                 <br />
                                 <div class='row'>
@@ -183,6 +192,7 @@ function retVal(){
                                     	<label for="zip">Zip Code</label>
                                     	<input type="zip" class="form-control" id="zip" placeholder="Zip Code" name='zipcode' required>
                                     </div>
+                                    <center><span  class="hidden" style="color: red;" id="zipCheckerInSignUp"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>ZIP Code must be numbers only.</span></center>
                                 </div>
                                 <br />
                                 <div class='row'>
