@@ -1,0 +1,264 @@
+@charset "utf-8";
+/* CSS Document */
+html, body {
+	height:100%;
+	margin:0;
+	padding:0;
+}
+html{
+}
+body{
+}
+.row {
+	position: relative;	
+}
+.footer {
+	position: absolute;
+}	
+.navbar {
+	z-index: 5;	
+}
+.carousel, .item, .active, .carousel-inner > .item > img {
+	height:100%;
+}
+.carousel-inner {
+	height:100%;
+}
+.carousel {
+	margin-bottom: 60px;
+}
+.carousel-caption {
+	z-index: 10;
+}
+.carousel .item {
+	background-color: #777;
+}
+.carousel .carousel-inner .bg {
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+
+/*contents*/
+
+.vwContent{
+    height:100vm; width:100vm; /* IE9 fallback */
+    width: 100%; 
+	background-size: 100%;
+    height: 100vmin;   
+    position: relative;
+    top:0;bottom:0;
+    left:0;right:0;
+	padding-top: 50px;
+    margin: auto;	
+}
+
+/* footer */
+
+#footer {
+  height: 60px;
+  background-color: #f5f5f5;
+  margin-top:50px;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+#footer {
+  background-color:#414141;
+}
+
+#footer a {
+  color:#efefef;
+}
+
+#footer > .container {
+  
+}
+
+/* Scrollbar */
+
+#bodyDiv {
+    position:absolute;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+}
+
+.track3 {
+    width: 10px;
+    background: rgba(0, 0, 0, 0);
+    margin-right: 2px;
+    border-radius: 10px;
+    -webkit-transition: background 250ms linear;
+    transition: background 250ms linear;
+}
+
+.track3:hover,
+.track3.dragging {
+    background: #d9d9d9; 
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.handle3 {
+    width: 7px;
+    right: 0;
+    background: #999;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 7px;
+    -webkit-transition: width 250ms;
+    transition: width 250ms;
+}
+
+.track3:hover .handle3,
+.track3.dragging .handle3 {
+    width: 10px;
+}
+
+/*custom bootstrap */
+
+#myCarousel {
+	z-index: 1;	
+}
+
+nav{
+	z-index: 5;
+	transition: all 0.4s ease;
+}
+nav a {
+	transition: all 0.4s ease;
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+	font-size: 18px;
+}
+
+nav .navbar-toggle {
+	transition: all 0.4s ease;
+	margin: 13px 15px 13px 0;
+}
+
+
+nav.navbar.shrink {
+	transition: all 0.4s ease;
+	min-height: 25px;
+}
+
+nav.shrink a {
+	transition: all 0.4s ease;
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+	font-size: 20px;
+}
+
+nav.shrink .navbar-toggle {
+	padding: 4px 5px;
+	margin: 8px 15px 8px 0;
+}
+
+nav #loginSpace_admin, nav #loginSpace_user{
+	height: inherit;	
+}
+
+nav.shrink #loginSpace_admin, nav.shrink #loginSpace_admin #navLink{
+	margin-bottom: inherit;
+	font-size: 9px;
+}
+
+nav.shrink #loginSpace_user, nav.shrink #loginSpace_user #navLink{
+	margin-bottom: inherit;
+	font-size: 9px;
+}
+
+nav.shrink #loginSpace_admin, nav.shrink #loginSpace_admin #navLink a{
+	margin-bottom: inherit;
+	font-size: 9px;
+}
+
+nav.shrink #loginSpace_user, nav.shrink #loginSpace_user #navLink a{
+	margin-bottom: inherit;
+	font-size: 9px;
+}
+
+
+
+nav.shrink .navbar-brand {
+	height: inherit;
+	width: auto;
+}
+
+#bLogin.hidden{
+	transition: all 0.4s ease;
+}
+#aLogin {
+	margin-top: 10px;
+	margin-bottom: -10px;
+	padding-right: 60px;
+}
+#loginInput_1, #loginInput_2{
+	height: 20px;	
+	padding: 0px;
+	font-height: 1pt;
+
+}
+#forgotPass > a, #navLink {
+	font-style:italic;
+	font-size: 15px;
+}
+#navLink, #navLink a {
+	font-size: 15px;
+	text-decoration: none;
+	transition: all 0.4s ease;
+	color: #333;
+	font-weight:bold;	
+}
+#navLink a:hover{
+	color: #666;
+}
+#forgotPass > a:hover{
+	text-decoration: none;
+}
+
+
+.defLinks a {
+	color: #333;
+	text-decoration: none;
+}
+
+.wrapFlow{
+	height: 250px;
+    vertical-align: top;
+    overflow: hidden;
+	overflow-y: scroll;
+	overflow-x: scroll;
+}
+
+.wrapFlow_admin{
+	height: 350px;
+    vertical-align: top;
+    overflow: hidden;
+	overflow-y: scroll;
+	overflow-x: scroll;
+}
+
+.admin-links a{
+	color: #333;
+}
+
+.admin-links a:hover {
+	text-decoration: none;
+	
+}
+
+#user_box{
+	height: 200px;
+	width: 270px;
+}
+
+#editor { 
+		width: inherit;
+		height: 400px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+}

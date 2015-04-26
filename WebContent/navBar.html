@@ -1,0 +1,87 @@
+<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+    	<div class='container-fluid'>
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand">People Helping People</a>
+        </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#imageHead">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contactUs">Contact Us</a></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Projects <b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="Projects/project_1.html">Project 1</a></li>
+                        <li><a href="#">Project 2</a></li>
+                        <li><a href="#">Project 3</a></li>
+                        <!--<li class="divider"></li>
+                        <li><a href="#">Trash</a></li>-->
+                    </ul>
+                </li>
+                <li><a href="donate.html">Donate</a></li>
+            </ul>
+            <!--<form role="search" class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" placeholder="Search" class="form-control">
+                </div>
+            </form>-->
+            <ul class="nav navbar-nav navbar-right">
+            	<li id='loginSpace_admin' class='hidden'>
+                	<div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-xs-12'>
+                                <p style='margin-top: 1px;'><em>Welcome back,</em> <span id='navLink'>Username</span>!</p>
+                                <p style='margin-top: -15px;'><em>Last active on</em> <span id='navLink'>date</span></p>
+                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='donations_panel.html'>Donations</a></span> | <span id='navLink'>ACP</span> | <span id='navLink'>Log Out!</span></p>
+                            </div>
+                        </div>
+                	</div>
+                </li>
+                <li id='loginSpace_user' class='hidden'>
+                	<div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-xs-12'>
+                                <p style='margin-top: 1px;'><em>Welcome back,</em> <span id='navLink'>Username</span>!</p>
+                                <p style='margin-top: -15px;'><em>Last active on</em> <span id='navLink'>date</span></p>
+                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='donations_panel.html'>Your Donations</a></span> | <span id='navLink'>Log Out!</span></p>
+                            </div>
+                        </div>
+                	</div>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right " id='loginSpace'>
+                <li id='bLogin' onclick='logn()'><a href='javascript:void(0)'>Login</a></li>
+                <li id='aOr' class='hidden-xs hidden-sm' style='margin-left: -20px;margin-right: -20px;'><a href='javascript:void(0)'>or</a></li>
+                <li id='sgnUp'><a href='sign_up.html'>Sign Up!</a></li>
+                <li id='aLogin' class='hidden'>
+                
+                	<div class='row'>
+						<div class='col-xs-9 col-xs-offset-1'>
+                            <form onSubmit='return showPanel()'>
+                              <div class="form-group">
+                                <input type="userID" class="form-control" id="loginInput_1" placeholder="User ID">
+                                <input type="password" class="form-control" id="loginInput_2" placeholder="Password">
+                              </div>
+                        </div>
+                        <div class='col-xs-1'>
+                              <div class="form-group">
+                                    <button type="submit" class="btn btn-default">Submit</button>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav> 

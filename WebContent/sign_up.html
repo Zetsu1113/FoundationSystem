@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>People Helping People Foundation - Donate</title>
+	<link href="CSS/bootstrap.css" rel="stylesheet" />
+    <link href="CSS/main.css" rel="stylesheet" />
+    <link href="CSS/bootstrap-formhelpers.css" rel="stylesheet" media='screen' />
+
+</head>
+
+<script>
+
+function retVal(){
+  alert($('#deliveryDate').val());
+}
+
+</script>
+
+<body data-spy="scroll" data-target="#navbarCollapse">
+	
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    	<div class='container-fluid'>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.html">People Helping People</a>
+		</div>
+       <div class="collapse navbar-collapse" id="example-navbar-collapse">
+			<ul class="nav navbar-nav">
+                <li><a href="index.html" class="transition">Home</a></li>
+                <li><a href="index.html#about" class="transition">About</a></li>
+                <li><a href="index.html#contactUs" class="transition">Contact Us</a></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Projects <b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="Projects/project_1.html" class="transition">Pre Membership and Orientation Seminar</a></li>
+                        <li><a href="Projects/project_2.html" class="transition">Adopted Families' Tambo Making Project</a></li>
+                        <li><a href="PROJECTS/project_3.html" class="transition">Project 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="donate.html" class="transition">Donate</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            	<li id='loginSpace_admin' class='hidden'>
+                	<div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-xs-12'>
+                                <p style='margin-top: 1px;'><em>Welcome back,</em> <span id='navLink'>Username</span>!</p>
+                                <p style='margin-top: -15px;'><em>Last active on</em> <span id='navLink'>date</span></p>
+                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='donations_panel.html' class="transition">Donations</a></span> | <span id='navLink'><a href='admin-content-wp/donation_log_wp.html' class="transition">ACP</a></span> | <span id='navLink'>Log Out!</span></p>
+                            </div>
+                        </div>
+                	</div>
+                </li>
+                <li id='loginSpace_user' class='hidden'>
+                	<div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-xs-12'>
+                                <p style='margin-top: 1px;'><em>Welcome back,</em> <span id='navLink'>Username</span>!</p>
+                                <p style='margin-top: -15px;'><em>Last active on</em> <span id='navLink'>date</span></p>
+                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='donations_panel.html' class="transition">Your Donations</a></span> | <span id='navLink'>Log Out!</span></p>
+                            </div>
+                        </div>
+                	</div>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right " id='loginSpace'>
+                <li id='bLogin' onclick='logn()'><a href='javascript:void(0)'>Login</a></li>
+                <li id='aOr' class='hidden-xs hidden-sm' style='margin-left: -20px;margin-right: -20px;'></li>
+                <li id='sgnUp'><a href='sign_up.html' class="transition">Sign Up!</a></li>
+                <li id='aLogin' class='hidden'>
+                
+                	<div class='row'>
+						<div class='col-xs-9 col-xs-offset-1'>
+                            <form onSubmit='return showPanel()'>
+                              <div class="form-group">
+                                <input type="userID" class="form-control" id="loginInput_1" placeholder="User ID">
+                                <input type="password" class="form-control" id="loginInput_2" placeholder="Password">
+                              </div>
+                        </div>
+                        <div class='col-xs-1'>
+                              <div class="form-group">
+                                    <button type="submit" class="btn btn-default">Submit</button>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </li>
+            </ul>
+		</div>
+        </div>
+    </nav> 
+	
+
+    <div class='container-fluid'>
+    	<div class='container'>
+        	<div class='row'>
+            <br/><br/><br/>
+                <div class='row'>
+                <div class='col-xs-12'>
+                    <div class='row'>
+                        <div class='col-xs-12 text-center'>
+                        	<hr />
+                            <h2>Be part of People Helping People - Sign Up an Account now</h2>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class='row'>
+                    	<div class='col-md-7 col-xs-12'>
+                        	<form method="post" action="informationTransfer">
+                            	<div class='row'>
+                                	<div class='col-md-6'>
+                                    	<label for="username">User Name</label>
+                                		<input type="text" class="form-control" id="username" placeholder="User Name" name='username' required>
+                                    </div>
+                                </div>
+                                <br />
+                            	<div class='row'>
+                                	<div class='col-md-6'>
+                                    	<label for="lastName">Last Name</label>
+                                		<input type="text" class="form-control" id="lastName" placeholder="Last Name" name='LastName' required>
+                                    </div>
+                                	<div class='col-md-6'>
+                                    	<label for="firstName">Name</label>
+                                   		<input type="text" class="form-control" id="firstName" placeholder="First Name" name='FirstName' required>
+                                    </div>                                                        
+                                </div>
+                                <br />
+                                <div class='row'>
+                                	<div class='col-md-6'>
+                                		<label for="lastName">E-Mail</label>
+                                		<input type="email" class="form-control" id="email_1" placeholder="E-Mail Address" name='Email' required>
+                                    </div>
+                                    <div class='col-md-6'>
+                                    	<label for="firstName">Confirm E-Mail</label>
+                                    	<input type="email" class="form-control" id="email_2" placeholder="Confirm E-Mail Address" required>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class='row'>
+                                	<div class='col-md-6'>
+                                		<label for="lastName">Password</label>
+                                		<input type="password" class="form-control" id="password_1" placeholder="Password" name='Password' required>
+                                    </div>
+                                    <div class='col-md-6'>
+                                    	<label for="firstName">Confirm Password</label>
+                                    	<input type="password" class="form-control" id="password_2" placeholder="Confirm Password" required>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class='row'>
+                                	<div class='col-md-6'>
+                                    	<label for='birthdate'>Birthday</label>
+                                    	<div class="bfh-datepicker" data-max="today" data-close="false" data-date="today" data-format="y-m-d">
+                                            <input id="birthdate" type="text" data-name="birthdate" name='birthdate' style='background-color:white;'>
+                                        </div>
+                                    </div>
+                                    <div class='col-md-6'>
+                                    	<label for='gender'>Gender</label>
+                                        <select class='form-control' name='gender'>
+                                        	<option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class='row'>
+                                	<div class='col-md-4'>
+                                    	<label for="countries_selectors">Country</label>
+                                    	<select id="countries_selectors" class="form-control bfh-countries" data-country="PH" name='country' required></select>
+                                    </div>
+                                    <div class='col-md-4'>
+                                    	<label for="State">State</label>
+                                    	<select class="form-control bfh-states" data-country="countries_selectors" id='State' name='State' required></select>
+                                    </div>
+                                    <div class='col-md-4'>
+                                    	<label for="zip">Zip Code</label>
+                                    	<input type="zip" class="form-control" id="zip" placeholder="Zip Code" name='zipcode' required>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class='row'>
+                                	<div class='col-md-12'>
+                                    	<label for="address">Home Address</label>
+                                		<input type="text" class="form-control" id="address" placeholder="Last Name" name='Address' required>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class='row'>
+                                	<div class='col-md-10'>
+                                    	<label for="phone">Contact Number</label>
+                                    	<input type="text" class="form-control bfh-phone" data-country="countries_selectors" id="phone" name='PhoneNumber'>
+                                    </div>	
+                                    <div class='col-md-2'>
+                                    	<label for="signup_b"><br /></label>
+                                    	<button type="submit" class="btn btn-default  center-block" name='signup_b'>Sign Up!</button>
+                                    </div>
+                                </div>
+                                
+                                
+                            </form>
+                        </div>
+                        <div class='col-md-5 col-xs-12'>
+                        	<hr />
+                        	<h3 class='text-center'>Benefits of Signing Up an account</h3>
+                            <hr />
+                            <ul>
+                            	<li><h4>Live records of your donations</h4></li>
+                                <li><h4>Receive updates of where your donation headed</h4></li>
+                                <li><h4>Be able to volunteer for upcoming projects</h4></li>
+                                <li><h4>Have your name included as a donor in our projects</h4></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            	</div>
+        	</div>
+  		</div>
+    </div>
+        
+    <br style='margin-top: 3vh;' />
+        
+ <div class="footer container-fluid">
+	<div class='row'>
+    	<div class='col-md-3 col-md-offset-1'>
+			<h4>
+            	People Helping People Foundation is a non-profit organization based on the Philippines
+            </h4>
+        </div>
+        <div class='col-md-1 hidden-xs hidden-sm'>
+        	<h1> | </h1>
+        </div>
+    	<div class='col-md-2'>
+        	<h5>Find Us!</h5>
+            <address>
+              <strong>People Helping People Foundation</strong><br>
+				1611 Espanya Manila<br>
+				(63) 406-1611
+            </address>
+        </div>
+        <div class='col-md-1 hidden-xs hidden-sm'>
+        	<h1> | </h1>
+        </div>
+        <div class='col-md-4'>
+        	<h5>Powered by ProjectHDX</h5>
+			<h4>
+            	A joint web application project developed by:
+            </h4>
+            <ul class='list-unstyled'>
+                <li>Cabe, Gerlan Mark B.</li>
+            	<li>Cancio, Kyle Cedrick R.</li>
+               	<li>Rosalado, Isabela Marie C.</li>
+               	<li>Suarez, Jessie James P.</li>
+            </ul>
+            	
+                
+        </div>
+    </div>
+ </div>
+</body>
+	    
+	<script src='JS/jquery.js' type='text/javascript' /></script>
+	<script src='JS/bootstrap-formhelpers-min.js'></script>
+    <script src='JS/bootstrap.js' type='text/javascript' /></script>
+    <script src='JS/custom_.js' type='text/javascript' /></script>
+    <script src="JS/jquery.viewportchecker.js"></script>
+    <script src="JS/jquery.nicescroll.js"></script>
+</html>
