@@ -37,6 +37,11 @@ public class Confirm extends HttpServlet {
 				a.setUsername(user);
 				session.setAttribute("account", a);
 				response.sendRedirect("index.html");
+				System.out.println(((AccountBean)(session.getAttribute("account"))).getPassword());
+			}
+			else 
+			{
+				System.out.println("Fail");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -46,8 +51,10 @@ public class Confirm extends HttpServlet {
 	
 	public boolean checkLogin(HttpServletRequest request, HttpServletResponse response) throws SQLException
 	{
-		request.getParameter("username");
-		request.getParameter("password");
+		user = request.getParameter("username");
+		pass = request.getParameter("password");
+		System.out.println(user);
+		System.out.println(pass);
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery("SELECT Username, Password FROM AccountDetails");
 		boolean c = false;
