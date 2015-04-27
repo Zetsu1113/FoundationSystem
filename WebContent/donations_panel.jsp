@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page session = "true" %>
 <jsp:useBean id="pbean" scope="session" class="com.information.personal.PersonalBean"/>
+<jsp:useBean id="adbean" scope="session" class="com.information.personal.ADBean"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -126,9 +127,9 @@
                                 <h4>Total Donations: $</h4>
                             </div>
                             <div class='col-md-2 text-right'>
-                            	<h4>[Joined Date]</h4>
-                                <h4>[Donation_Count]</h4>
-                                <h4>[Donation_Value]</h4>
+                            	<h4>${adbean.dateJoined }</h4>
+                                <h4>${adbean.donationsCount }</h4>
+                                <h4>${adbean.totalDonations }</h4>
                             </div>
                         </div>
                         <!-- For Small Screens -->
@@ -149,11 +150,11 @@
                         <div class='row text-center bg-success hidden-md hidden-lg'>
                         	<div class='col-md-12'>
                             	<h4>Joined On: </h4>
-                                <h6>[Joined Date]</h6>
+                                <h6>${adbean.dateJoined }</h6>
                                 <h4>Donation Count: </h4>
-                                <h6>[Donation_Count]</h6>
+                                <h6>${adbean.donationsCount }</h6>
                                 <h4>Total Donations: $</h4>
-                                <h6>[Donation_Value]</h6>
+                                <h6>${adbean.totalDonations }</h6>
                             </div>
                         </div>
                     </div>

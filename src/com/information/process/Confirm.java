@@ -1,6 +1,7 @@
 package com.information.process;
 import com.information.process.DBConnection;
 import com.information.personal.PersonalBean;
+import com.information.personal.ADBean;
 
 import java.sql.*;
 import java.io.IOException;
@@ -23,13 +24,15 @@ public class Confirm extends HttpServlet {
 	private String user;
 	private String pass;
 	private ResultSet rs;
+	private PersonalBean p = new PersonalBean();
+	private ADBean a = new ADBean();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		try {
 			if(checkLogin(request, response))
 			{
@@ -41,9 +44,10 @@ public class Confirm extends HttpServlet {
 				response.addCookie(password);
 				if (page.equals("index.html") || page.equals("FoundationSystem"))
 				{
-					PersonalBean p = getInfo(user);
+					getInfo(user);
 					HttpSession session = request.getSession();
 					session.setAttribute("pbean", p);
+					session.setAttribute("adbean", a);
 					response.sendRedirect("donations_panel.jsp");
 				}
 			}
@@ -71,6 +75,8 @@ public class Confirm extends HttpServlet {
 			if (dbUsername.equals(user) && dbPassword.equals(pass))
 			{
 				c = true;
+				if (rs.getString("Active").equals("NO"))
+					c = false;
 				break;
 			}
 			else
@@ -79,17 +85,12 @@ public class Confirm extends HttpServlet {
 		return c;
 	}
 	
-	public PersonalBean getInfo(String username) throws SQLException
+	public void getInfo(String username) throws SQLException
 	{
-		PersonalBean p = new PersonalBean();
 		Statement st = con.createStatement();
-		rs = st.executeQuery("SELECT * FROM PersonalInformation");
-		while (rs.next())
-		{
-			String dbUsername = rs.getString("Username");
-			if(dbUsername.equals(username))
-				break;
-		}
+		rs = st.executeQuery("SELECT * FROM PersonalInformation WHERE Username = \""+username+"\"");
+		rs.next();
+		
 		p.setLastName(rs.getString(2));
 		p.setFirstName(rs.getString(3));
 		p.setBirthdate(rs.getString(5));
@@ -97,16 +98,17 @@ public class Confirm extends HttpServlet {
 		p.setPhoneNumber(rs.getString(8));
 		
 		int code = rs.getInt("AddressID");
-		int dbCode;
-		rs = st.executeQuery("SELECT * FROM AddressInformation");
-		while (rs.next())
-		{
-			dbCode = rs.getInt("AddressID");
-			if (dbCode == code)
-				break;
-		}
+		rs = st.executeQuery("SELECT * FROM AddressInformation WHERE AddressID = " + code);
+		rs.next();
 		p.setAddress(rs.getString(2) + ", " + rs.getString(4) + ", " + rs.getString(5) + ", " + rs.getString(3));
-		return p;
+		
+		st = con.createStatement();
+		rs = st.executeQuery("SELECT Username, COUNT(*) FROM DonationLog WHERE Username = \""+ username+"\"");
+		rs.next(); a.setDonationsCount(rs.getInt("COUNT(*)"));
+		rs = st.executeQuery("SELECT DateJoined FROM AccountDetails WHERE Username = \""+username+"\"");
+		rs.next(); a.setDateJoined(rs.getDate("DateJoined"));
+		rs = st.executeQuery("SELECT Donations FROM UserDonation WHERE Username = \""+username+"\"");
+		rs.next(); a.setTotalDonations(rs.getDouble("Donations"));
 	}
 }
 
