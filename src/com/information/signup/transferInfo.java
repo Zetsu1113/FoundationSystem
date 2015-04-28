@@ -42,7 +42,7 @@ public class transferInfo extends HttpServlet {
 		Connection con = new DBConnection().connect();
 		try
 		{
-			PreparedStatement stmt1, stmt2, stmt3;
+			PreparedStatement stmt1, stmt2, stmt3, stmt4;
 			stmt1 = con.prepareStatement("INSERT INTO AddressInformation (AddressID, Country, ZipCode, State, Address) VALUES (null,?,?,?,?)");
 			stmt1.setString(1, request.getParameter("country"));
 			stmt1.setString(2, request.getParameter("zipcode"));
@@ -52,7 +52,7 @@ public class transferInfo extends HttpServlet {
 			stmt2 = con.prepareStatement("INSERT INTO AccountDetails VALUES (?,?,?,?,?)");
 			stmt2.setString(1, request.getParameter("username"));
 			stmt2.setString(2, request.getParameter("Password"));
-			stmt2.setDate(3, (Date) new java.util.Date());
+			stmt2.setDate(3, new java.sql.Date(new java.util.Date().getTime()));
 			stmt2.setString(4, "3");
 			stmt2.setString(5, "YES");
 			stmt2.executeUpdate();
@@ -69,6 +69,10 @@ public class transferInfo extends HttpServlet {
 			stmt3.setString(7, request.getParameter("Email"));
 			stmt3.setString(8, request.getParameter("PhoneNumber"));
 			stmt3.executeUpdate();
+			stmt4 = con.prepareStatement("INSERT INTO UserDonation VALUES (?, ?, null)");
+			stmt4.setString(1, request.getParameter("username"));
+			stmt4.setDouble(2, 0);
+			stmt4.execute();
 			con.commit();
 			//response.sendRedirect() to SUCCESS Page;
 		}
