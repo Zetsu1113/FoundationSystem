@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import = "java.util.ArrayList" %>
+<%@ page import = "com.information.personal.UserDonationBean" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -108,7 +113,7 @@
                         	<table class='table table-hover table-bordered table-responsive text-center admin-links'>
                             	<tr height='250px'>
                                 	<td style='padding: 40px 0 20px 0;'>
-                                    	<p>Welcome, <strong>&lt;admin&gt;</strong></p>
+                                    	<p>Welcome, <strong>${cookie.username.value}</strong></p>
                                         <p>Last Active on: <strong>&lt;Date&gt;</strong></p>
                                         <p>New User: <strong>&lt;Username&gt;</strong></p>
                                         <p>Total Donations: <strong>&lt;value&gt;</strong></p>

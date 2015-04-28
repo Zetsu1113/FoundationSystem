@@ -3,8 +3,16 @@ package com.information.personal;
 public class UserDonationBean {
 	private int donationID;
 	private double amount;
+	private String username;
 	private java.util.Date dateDonated;
 	
+
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public int getDonationID() {
 		return donationID;
 	}
