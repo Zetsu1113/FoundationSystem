@@ -27,6 +27,7 @@ public class Confirm extends HttpServlet {
 	private PersonalBean p = new PersonalBean();
 	private ADBean a = new ADBean();
 	private ArrayList<UserDonationBean> u;
+	private double total;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -51,6 +52,7 @@ public class Confirm extends HttpServlet {
 					session.setAttribute("pbean", p);
 					session.setAttribute("adbean", a);
 					session.setAttribute("udbean", u);
+					session.setAttribute("total", total);
 					response.sendRedirect("donations_panel.jsp");
 				}
 			}
@@ -112,6 +114,10 @@ public class Confirm extends HttpServlet {
 		rs.next(); a.setDateJoined(rs.getDate("DateJoined"));
 		rs = st.executeQuery("SELECT Donations FROM UserDonation WHERE Username = \""+username+"\"");
 		rs.next(); a.setTotalDonations(rs.getDouble("Donations"));
+		
+		rs = st.executeQuery("SELECT SUM(Amount) FROM DonationLog");
+		rs.next();
+		total = rs.getDouble(1);
 	}
 	
 	public void getUserDonations(String username) throws SQLException

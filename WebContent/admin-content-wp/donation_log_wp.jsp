@@ -116,7 +116,7 @@
                                     	<p>Welcome, <strong>${cookie.username.value}</strong></p>
                                         <p>Last Active on: <strong>&lt;Date&gt;</strong></p>
                                         <p>New User: <strong>&lt;Username&gt;</strong></p>
-                                        <p>Total Donations: <strong>&lt;value&gt;</strong></p>
+                                        <p>Total Donations: <strong><% out.print(session.getAttribute("total")); %></strong></p>
 										<br />
                                         <p>You have <strong>&lt;int&gt;</strong> new site messages</p>
                                     </td>

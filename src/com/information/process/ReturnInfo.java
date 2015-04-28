@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ReturnInfo
@@ -27,11 +28,12 @@ public class ReturnInfo extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("udbean", u);
+		HttpSession session = request.getSession(false);
+		session.setAttribute("query", u);
 		response.sendRedirect("donation_log_wp.jsp");
 	}
 	
-	protected void getLog() throws SQLException
+	protected void getLog(String username) throws SQLException
 	{
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery("SELECT * FROM DonationLog");
