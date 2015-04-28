@@ -7,6 +7,16 @@ Cancio, Kyle Cedrick (Graphics and Layout Designer)
 Rosalado, Isabela Marie (User Interaction Designer)
 Suarez, Jessie James (Back-end Developer)
 
+Version 2.0
+Front-End:
+- fixed client-side validation bug
+
+Version 1.9
+Back-End:
+- added necessary codes in sign up servlet to ensure proper database retrieval of information
+- converted donation_log_wp to JSP
+- started the codes for querying in admin panels
+
 Version 1.7
 Back-End:
 - finished donations panel user donations listing (retrieving information from DB)
