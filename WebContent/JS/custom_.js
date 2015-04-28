@@ -207,7 +207,7 @@ function validateSignUp()
 	{
 		$("#UserNameCheckerInSignUp").addClass("hidden");
 	}
-	if (!(/^[a-zA-Z()]+$/.test(lname)) || !(/^[a-zA-Z()]+$/.test(fname)) ) 
+	if (!(/^[a-z A-Z()]+$/.test(lname)) || !(/^[a-z A-Z()]+$/.test(fname)) ) 
 	{
 		$("#NameCheckerInSignUp").removeClass("hidden");
 		return false;
