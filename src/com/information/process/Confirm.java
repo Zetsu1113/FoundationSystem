@@ -1,11 +1,11 @@
 package com.information.process;
 import com.information.process.DBConnection;
-import com.information.personal.PersonalBean;
-import com.information.personal.ADBean;
+import com.information.personal.*;
 
 import java.sql.*;
 import java.io.IOException;
 
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -26,6 +26,7 @@ public class Confirm extends HttpServlet {
 	private ResultSet rs;
 	private PersonalBean p = new PersonalBean();
 	private ADBean a = new ADBean();
+	private ArrayList<UserDonationBean> u;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -45,9 +46,11 @@ public class Confirm extends HttpServlet {
 				if (page.equals("index.html") || page.equals("FoundationSystem"))
 				{
 					getInfo(user);
+					getUserDonations(user);
 					HttpSession session = request.getSession();
 					session.setAttribute("pbean", p);
 					session.setAttribute("adbean", a);
+					session.setAttribute("udbean", u);
 					response.sendRedirect("donations_panel.jsp");
 				}
 			}
@@ -109,6 +112,21 @@ public class Confirm extends HttpServlet {
 		rs.next(); a.setDateJoined(rs.getDate("DateJoined"));
 		rs = st.executeQuery("SELECT Donations FROM UserDonation WHERE Username = \""+username+"\"");
 		rs.next(); a.setTotalDonations(rs.getDouble("Donations"));
+	}
+	
+	public void getUserDonations(String username) throws SQLException
+	{
+		Statement  st = con.createStatement();
+		u = new ArrayList<UserDonationBean>();
+		rs = st.executeQuery("SELECT * From DonationLog WHERE Username = \""+username+"\"");
+		while(rs.next())
+		{
+			UserDonationBean ud = new UserDonationBean();
+			ud.setDonationID(rs.getInt("DonationID"));
+			ud.setAmount(rs.getDouble("Amount"));
+			ud.setDateDonated(rs.getDate("DateDonated"));
+			u.add(ud);
+		}
 	}
 }
 

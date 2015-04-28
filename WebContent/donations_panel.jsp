@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page session = "true" %>
+<%@ page import = "com.information.personal.UserDonationBean" %>
+<%@ page import = "java.util.ArrayList" %>
 <jsp:useBean id="pbean" scope="session" class="com.information.personal.PersonalBean"/>
 <jsp:useBean id="adbean" scope="session" class="com.information.personal.ADBean"/>
 
@@ -176,7 +178,20 @@
                                 <th class='text-center'>Donated To</th>
                                 <th class='text-center'>Amount</th>
                             </tr>
-                            <tr>
+                            <%
+                            	ArrayList<UserDonationBean> u = (ArrayList<UserDonationBean>)session.getAttribute("udbean");
+                            	for (int i = 0; i < u.size(); i++)
+                            	{
+                            		out.println("<tr>");
+                            		out.println("<td>" + u.get(i).getDonationID() + "</td>");
+                            		out.println("<td>" + u.get(i).getDateDonated() + "</td>");
+                            		out.println("<td>" + "Donated To" + "</td>");
+                            		out.println("<td>" + u.get(i).getAmount() + "</td>");
+                            		out.println("</tr>");
+                            	}
+                            %>
+                            	
+<!--                            <tr>
 								<td>[DONATION_ID]</td>
                                 <td>[DATE]</td>
                                 <td>[DONATED_TO]</td>
@@ -229,7 +244,7 @@
                                 <td>[DATE]</td>
                                 <td>[DONATED_TO]</td>
                                 <td>[AMOUNT]</td>
-                            </tr>
+                            </tr>-->
                         </table>
                         </div>
                     </div>

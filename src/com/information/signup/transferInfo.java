@@ -1,6 +1,7 @@
 package com.information.signup;
 
 import com.information.process.DBConnection;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -51,9 +52,9 @@ public class transferInfo extends HttpServlet {
 			stmt2 = con.prepareStatement("INSERT INTO AccountDetails VALUES (?,?,?,?,?)");
 			stmt2.setString(1, request.getParameter("username"));
 			stmt2.setString(2, request.getParameter("Password"));
-			stmt2.setString(3, null);
-			stmt2.setString(4, null);
-			stmt2.setInt(5, 3);
+			stmt2.setDate(3, (Date) new java.util.Date());
+			stmt2.setString(4, "3");
+			stmt2.setString(5, "YES");
 			stmt2.executeUpdate();
 			stmt3 = con.prepareStatement("INSERT INTO PersonalInformation VALUES (?,?,?,?,?,?,?,?)");
 			Statement address = con.createStatement();
