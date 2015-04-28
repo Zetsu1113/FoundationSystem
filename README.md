@@ -7,6 +7,15 @@ Cancio, Kyle Cedrick (Graphics and Layout Designer)
 Rosalado, Isabela Marie (User Interaction Designer)
 Suarez, Jessie James (Back-end Developer)
 
+Version 1.7
+Back-End:
+- finished donations panel user donations listing (retrieving information from DB)
+- can successfully view user donations via a responsive table
+
+Version 1.6
+Back-End:
+- finished donations panel user information display
+
 Version 1.5
 Front-End:
 - added the MOA PDF and project details
