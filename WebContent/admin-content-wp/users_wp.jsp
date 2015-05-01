@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import = "java.util.ArrayList" %>
-<%@ page import = "com.information.personal.UserDonationBean" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -17,7 +14,7 @@
 <body data-spy="scroll" data-target="#navbarCollapse">
 	
 	<jsp:include page="../navBar.jsp" />  
-
+ 
 		
     <div class='container-fluid'>
     	<div class='container'>
@@ -29,22 +26,22 @@
                         	<table class='table table-hover table-bordered table-responsive text-center admin-links'>
                             	<tr height='250px'>
                                 	<td style='padding: 40px 0 20px 0;'>
-                                    	<p>Welcome, <strong>${cookie.username.value}</strong></p>
+                                    	<p>Welcome, <strong>&lt;admin&gt;</strong></p>
                                         <p>Last Active on: <strong>&lt;Date&gt;</strong></p>
                                         <p>New User: <strong>&lt;Username&gt;</strong></p>
-                                        <p>Total Donations: <strong><% out.print(session.getAttribute("total")); %></strong></p>
+                                        <p>Total Donations: <strong>&lt;value&gt;</strong></p>
 										<br />
                                         <p>You have <strong>&lt;int&gt;</strong> new site messages</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                	<td class='active'>
-                                    	<a href='#'><h3>DONATION LOG</h3></a>
+                                	<td>
+                                    	<a href='donation_log_wp.jsp'><h3>DONATION LOG</h3></a>
                                     </td>
                                 </tr>
                                 <tr>
-                                	<td>
-                                    	<a href='users_wp.jsp'><h3>USERS</h3></a>
+                                	<td class='active'>
+                                    	<a href='#'><h3>USERS</h3></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -97,89 +94,53 @@
                             </div>
                             <div class='row'>
                                 <div class='col-xs-12 center-block'>
-                                <div class='wrapFlow_admin'>
-                                    <table class='table table-hover table-bordered table-responsive table-condensed'>
-                                        <tr>
-                                            <th class='text-center'>Surname</th>
-                                            <th class='text-center'>Name</th>
-                                            <th class='text-center'>Donation ID</th>
-                                            <th class='text-center'>Date</th>
-                                            <th class='text-center'>Donated To</th>
-                                            <th class='text-center'>Amount</th>
-                                        </tr>
-                                        <tr>
-                                            <td>[SURNAME]</td>
-                                            <td>[NAME]</td>
-                                            <td>[DONATION_ID]</td>
-                                            <td>[DATE]</td>
-                                            <td>[DONATED_TO]</td>
-                                            <td>[AMOUNT]</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[SURNAME]</td>
-                                            <td>[NAME]</td>
-                                            <td>[DONATION_ID]</td>
-                                            <td>[DATE]</td>
-                                            <td>[DONATED_TO]</td>
-                                            <td>[AMOUNT]</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[SURNAME]</td>
-                                            <td>[NAME]</td>
-                                            <td>[DONATION_ID]</td>
-                                            <td>[DATE]</td>
-                                            <td>[DONATED_TO]</td>
-                                            <td>[AMOUNT]</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[SURNAME]</td>
-                                            <td>[NAME]</td>
-                                            <td>[DONATION_ID]</td>
-                                            <td>[DATE]</td>
-                                            <td>[DONATED_TO]</td>
-                                            <td>[AMOUNT]</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[SURNAME]</td>
-                                            <td>[NAME]</td>
-                                            <td>[DONATION_ID]</td>
-                                            <td>[DATE]</td>
-                                            <td>[DONATED_TO]</td>
-                                            <td>[AMOUNT]</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[SURNAME]</td>
-                                            <td>[NAME]</td>
-                                            <td>[DONATION_ID]</td>
-                                            <td>[DATE]</td>
-                                            <td>[DONATED_TO]</td>
-                                            <td>[AMOUNT]</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[SURNAME]</td>
-                                            <td>[NAME]</td>
-                                            <td>[DONATION_ID]</td>
-                                            <td>[DATE]</td>
-                                            <td>[DONATED_TO]</td>
-                                            <td>[AMOUNT]</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[SURNAME]</td>
-                                            <td>[NAME]</td>
-                                            <td>[DONATION_ID]</td>
-                                            <td>[DATE]</td>
-                                            <td>[DONATED_TO]</td>
-                                            <td>[AMOUNT]</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[SURNAME]</td>
-                                            <td>[NAME]</td>
-                                            <td>[DONATION_ID]</td>
-                                            <td>[DATE]</td>
-                                            <td>[DONATED_TO]</td>
-                                            <td>[AMOUNT]</td>
-                                        </tr>
-                                    </table>
+                                    <div class='wrapFlow_admin' style='padding: 5px;'>
+                                    	<div class='row'>
+                                        	<ul class='list-inline'>
+                                            	<div class='col-md-4'>
+                                                    <li class='list-group-item' id='user_box'>
+                                                        <ul class='list-unstyled'>
+                                                            <li>Name: <strong>&lt;surname&gt;</strong>,<strong>&lt;name&gt;</strong></li>
+                                                            <li>Username: <strong>&lt;user_ID&gt;</strong></li>
+                                                            <li>Joined Date: <strong>&lt;date&gt;</strong></li>
+                                                            <li>Amount Donated: <strong>&lt;amount&gt;</strong></li>
+                                                            <li>E-Mail Address: <strong>&lt;email&gt;</strong></li>
+                                                            <li>Mailing Address: <strong>&lt;mailing&gt;</strong></li>
+                                                            <br />
+                                                            <li><button type="button" class="btn btn-default">DELETE</button></li>                                                                                              	
+                                                        </ul>
+                                                    </li>
+                                                </div>
+                                                <div class='col-md-4'>
+                                                    <li class='list-group-item' id='user_box'>
+                                                        <ul class='list-unstyled'>
+                                                            <li>Name: <strong>&lt;surname&gt;</strong>,<strong>&lt;name&gt;</strong></li>
+                                                            <li>Username: <strong>&lt;user_ID&gt;</strong></li>
+                                                            <li>Joined Date: <strong>&lt;date&gt;</strong></li>
+                                                            <li>Amount Donated: <strong>&lt;amount&gt;</strong></li>
+                                                            <li>E-Mail Address: <strong>&lt;email&gt;</strong></li>
+                                                            <li>Mailing Address: <strong>&lt;mailing&gt;</strong></li>
+                                                            <br />
+                                                            <li><button type="button" class="btn btn-default">DELETE</button></li>                                                                                              	
+                                                        </ul>
+                                                    </li>
+                                                </div>
+                                                <div class='col-md-4'>
+                                                    <li class='list-group-item' id='user_box'>
+                                                        <ul class='list-unstyled'>
+                                                            <li>Name: <strong>&lt;surname&gt;</strong>,<strong>&lt;name&gt;</strong></li>
+                                                            <li>Username: <strong>&lt;user_ID&gt;</strong></li>
+                                                            <li>Joined Date: <strong>&lt;date&gt;</strong></li>
+                                                            <li>Amount Donated: <strong>&lt;amount&gt;</strong></li>
+                                                            <li>E-Mail Address: <strong>&lt;email&gt;</strong></li>
+                                                            <li>Mailing Address: <strong>&lt;mailing&gt;</strong></li>
+                                                            <br />
+                                                            <li><button type="button" class="btn btn-default">DELETE</button></li>                                                                                              	
+                                                        </ul>
+                                                    </li>
+                                                </div>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
