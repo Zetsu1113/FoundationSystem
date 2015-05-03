@@ -55,7 +55,7 @@
 					<li><a href="<%=request.getContextPath()%>/donate.jsp" class="transition">Donate</a></li>
 				<%} %>
             </ul>
-            <% if (ck.length == 1) {%>
+            <% if (ck == null || ck.length == 1) {%>
             <!-- LOGGED OFF -->
             <ul class="nav navbar-nav navbar-right " id='loginSpace'>
                 <li id='bLogin' onclick='logn()'><a href='javascript:void(0)'>Login</a></li>
