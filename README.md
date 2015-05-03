@@ -7,6 +7,13 @@ Cancio, Kyle Cedrick (Graphics and Layout Designer)
 Rosalado, Isabela Marie (User Interaction Designer)
 Suarez, Jessie James (Back-end Developer)
 
+Version 2.4
+Back-End:
+- pages were converted to JSP
+- finished maintaining the user state
+- finished putting donation information to database
+- finished logout
+
 Version 2.0
 Front-End:
 - fixed client-side validation bug
