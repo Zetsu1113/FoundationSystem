@@ -23,6 +23,7 @@ public class Confirm extends HttpServlet {
 	private Connection con = new DBConnection().connect();
 	private String user;
 	private String pass;
+	private String roles; 
 	private ResultSet rs;
 	private PersonalBean p = new PersonalBean();
 	private ADBean a = new ADBean();
@@ -36,16 +37,20 @@ public class Confirm extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			if(checkLogin(request, response))
-			{
-				String res[] = (request.getHeader("referer")).split("/");
-				String page = res[res.length - 1];
-				Cookie username = new Cookie("username", user);
-				Cookie password = new Cookie("password", user);
-				response.addCookie(username);
-				response.addCookie(password);
-				if (page.equals("index.html") || page.equals("FoundationSystem"))
+				if(checkLogin(request, response))
 				{
+					String res[] = (request.getHeader("referer")).split("/");
+					String page = res[res.length - 1];
+					Cookie username = new Cookie("username", user);
+					Cookie password = new Cookie("password", pass);
+					Cookie role = new Cookie("role", roles);
+					
+					username.setMaxAge(-1);
+					password.setMaxAge(-1);
+					role.setMaxAge(-1);
+					response.addCookie(username);
+					response.addCookie(password);
+					response.addCookie(role);
 					getInfo(user);
 					getUserDonations(user);
 					HttpSession session = request.getSession();
@@ -53,13 +58,14 @@ public class Confirm extends HttpServlet {
 					session.setAttribute("adbean", a);
 					session.setAttribute("udbean", u);
 					session.setAttribute("total", total);
-					response.sendRedirect("donations_panel.jsp");
+					session.setAttribute("status", "in");
+					
+					request.getRequestDispatcher("landingPage.jsp").forward(request, response);
 				}
-			}
-			else 
-			{
-				//redirect to failed page
-			}
+				else
+				{
+					response.sendRedirect("login.jsp");
+				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -79,6 +85,7 @@ public class Confirm extends HttpServlet {
 			String dbUsername = rs.getString("Username"), dbPassword = rs.getString("Password");
 			if (dbUsername.equals(user) && dbPassword.equals(pass))
 			{
+				roles = rs.getString("RoleID");
 				c = true;
 				if (rs.getString("Active").equals("NO"))
 					c = false;

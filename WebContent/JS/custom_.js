@@ -195,11 +195,12 @@ function validateSignUp()
 	var email2 = $("#email_2").val();
 	var lname = $("#lastName").val();
 	var fname = $("#firstName").val();
-    var uname = $("#username").val();   
+    var uname = $("#usernameSignUp").val();   
     var zip = $("#zip").val(); 
 	
 	if(uname.length<3 || uname.length>16)
 	{
+		alert(uname.length);
 		$("#UserNameCheckerInSignUp").removeClass("hidden");
 		return false;
 	}
@@ -207,7 +208,7 @@ function validateSignUp()
 	{
 		$("#UserNameCheckerInSignUp").addClass("hidden");
 	}
-	if (!(/^[a-z A-Z()]+$/.test(lname)) || !(/^[a-z A-Z()]+$/.test(fname)) ) 
+	if (!(/^[a-zA-Z()]+$/.test(lname)) || !(/^[a-zA-Z()]+$/.test(fname)) ) 
 	{
 		$("#NameCheckerInSignUp").removeClass("hidden");
 		return false;
@@ -249,8 +250,8 @@ function validateSignUp()
 
 function validateDonationLogInForm()
 {
-	var password1 = $("#passwordInput1").val();
-	var password2 = $("#passwordInputConfirmation1").val();
+	var password1 = $("#passwordInput").val();
+	var password2 = $("#passwordInputconfirm").val();
 
 	if(password1 == password2)
 	{
@@ -261,6 +262,8 @@ function validateDonationLogInForm()
 		$("#passwordCheckerFirst").removeClass("hidden");
 		return false;
 	}
+	return showPanel("hello");
+
 	
 	
 

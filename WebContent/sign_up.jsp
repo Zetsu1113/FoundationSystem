@@ -44,7 +44,7 @@ function retVal(){
                             	<div class='row'>
                                 	<div class='col-md-6'>
                                     	<label for="username">User Name</label>
-                                		<input type="text" class="form-control" id="username" placeholder="User Name" name='username' required>
+                                		<input type="text" class="form-control" id="usernameSignUp" placeholder="User Name" name='username' required>
                                     </div>
                                     <div class='col-md-6'>
 										<br><center><span  class="hidden" style="color: red;" id="UserNameCheckerInSignUp"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>Username must be no less than 3 characters and no more than 16 characters.</span></center>
@@ -61,7 +61,7 @@ function retVal(){
                                    		<input type="text" class="form-control" id="firstName" placeholder="First Name" name='FirstName' required>
                                     </div> 
                                     <center><span  class="hidden" style="color: red;" id="NameCheckerInSignUp"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>Names must only contain alphabets.</span></center>									
-                                                                                           
+                                                                                            
                                 </div>
                                 <br />
                                 <div class='row'>
@@ -163,7 +163,7 @@ function retVal(){
   		</div>
     </div>
 	<br style='margin-top: 3vh;' />
-  	<jsp:include page="footerBar.html" />  
+  	<jsp:include page="footerBar.html"/>  
 
 </body>
 	    

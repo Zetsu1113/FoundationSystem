@@ -30,19 +30,20 @@
                 </div>
                 <div class='row'>
                 	<div class='col-md-5 col-xs-12'>
-                    	<form onsubmit='return showPanel("text")'>
+                    	<form onsubmit="return validateDonationLogInForm()">
                           <div class="form-group">
-                            <label for="userId">UserID</label>
-                            <input type="userId" class="form-control" id="idInput" placeholder="User ID" required>
+                            <label for="idInput">UserID</label>
+                            <input type="text" class="form-control" id="idInput" name='idInput' placeholder="User ID" required>
                           </div>
                           <div class="form-group">
-                            <label for="Password">Password</label>
-                            <input type="password" class="form-control" id="passwordInput" placeholder="Enter Password" required>
+                            <label for="passwordInput">Password</label>
+                            <input type="password" class="form-control" id="passwordInput" name="passwordInput" placeholder="Enter Password" required>
                           </div>
                           <div class="form-group">
-                            <label for="Password">Confirm Password</label>
-                            <input type="password" class="form-control" id="passwordInput" placeholder="Enter Confirm Password" required>
+                            <label for="passwordInputconfirm">Confirm Password <span  class="hidden" style="color: red;" id="passwordCheckerFirst"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>Passwords don't match</span></label>
+                            <input type="password" class="form-control" id="passwordInputconfirm" name="passwordInputconfirm" placeholder="Enter Confirm Password" required>
                           </div>
+                         
                           <div class="form-group">
                          	 	<button type="submit" class="btn btn-default" >Submit</button>
                                 <span id='forgotPass' ><a href='' style='margin-left: 10px;' class='text-danger'>Forgot Password?</a></span>
@@ -77,13 +78,15 @@
                 </div>
                 <div class='row'>
                 	<div class='col-md-5 col-xs-12'>
-                    	<form action='successful.html'>
+                    	<form action='transferDonationPath' onclick=" return validateDonationForm()" method="post">
 							<div class="form-group">
                                 <label class="sr-only" for="amount">Amount (in dollars)</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">$</div>
-                                    <input type="text" class="form-control" id="amountInput" placeholder="Amount">
+                                    <input type="text" class="form-control" id="amountInput" placeholder="Amount" name="amount">
                                 </div>
+                                <center><span  class="hidden" style="color: red;" id="amountChecker"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>Please enter valid amount</span></center>
+                       
                             </div>
                             <h3>Donation Terms</h3>
                             <label class="radio-inline">
@@ -98,12 +101,14 @@
                             <h3>Security Check</h3>
 							<div class="form-group">
                             	<label for="Password">Password</label>
-                            	<input type="password" class="form-control" id="passwordInput" placeholder="Enter Password">
+                            	<input type="password" class="form-control" id="passwordInput2" placeholder="Enter Password">
 							</div>
 							<div class="form-group">
 								<label for="Password">Confirm Password</label>
-								<input type="password" class="form-control" id="passwordInput" placeholder="Enter Confirm Password">
+								<input type="password" class="form-control" id="passwordInputConfirmation2" placeholder="Enter Confirm Password">
 							</div>
+							<center><span  class="hidden" style="color: red;" id="passwordChecker"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>Passwords don't match</span></center>
+							
 							<div class="form-group">
                          	 	<button type="submit" class="btn btn-primary">Transfer Cash!</button>
 							</div>

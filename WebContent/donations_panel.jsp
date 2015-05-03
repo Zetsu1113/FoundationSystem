@@ -61,7 +61,7 @@
                             	<h4>Name: </h4>
                                 <h6>${pbean.lastName }, ${pbean.firstName } ${pbean.middleName}</h6>
                                 <h4>Used ID: </h4>
-                                <h6>${pbean.username }</h6>
+                                <h6>${cookie.username.value }</h6>
                                 <h4>Contact Number: </h4>
                                 <h6>${pbean.phoneNumber }</h6>
                                 <h4>Mailing Address: </h4>
@@ -106,7 +106,7 @@
                             		out.println("<tr>");
                             		out.println("<td>" + u.get(i).getDonationID() + "</td>");
                             		out.println("<td>" + u.get(i).getDateDonated() + "</td>");
-                            		out.println("<td>" + "Donated To" + "</td>");
+                            		out.println("<td>" + "TBD" + "</td>");
                             		out.println("<td>" + u.get(i).getAmount() + "</td>");
                             		out.println("</tr>");
                             	}

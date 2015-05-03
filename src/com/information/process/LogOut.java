@@ -16,14 +16,23 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Logout")
 public class LogOut extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private Cookie []ck;
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Cookie[] ck = request.getCookies();
-		if (ck != null)
-			System.out.println(ck[0].getValue());
+		ck = request.getCookies();
+		ck[0].setMaxAge(0);
+		response.addCookie(ck[0]);
+		ck[1].setMaxAge(0);
+		response.addCookie(ck[1]);
+		ck[2].setMaxAge(0);
+		response.addCookie(ck[2]);
+		ck[3].setMaxAge(0);
+		response.addCookie(ck[3]);
+		
+		request.getSession(false).setAttribute("status", "out");
+		request.getRequestDispatcher("landingPage.jsp").forward(request, response);
 	}
 
 	/**

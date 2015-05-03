@@ -78,9 +78,17 @@
 		transform: translate(-50%,-50%);
 	}
 	
-	#welcome_ {
+	#admin_login {
+		width: 35%;
+		top: 50%;
+	}
+	
+	#user_login {
+		width: 35%;
+		top: 50%;
 	}
 
+	
 /*NAV BAR*/
 
 @media(min-width:767px) {
@@ -147,7 +155,7 @@
 		margin-bottom: -10px;
 		padding-right: 60px;
 	}
-	#loginInput_1, #loginInput_2{
+	.loginInput_1{
 		height: 20px;	
 		padding: 0px;
 		font-height: 1pt;

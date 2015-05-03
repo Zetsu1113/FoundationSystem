@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%
+	Cookie ck[] = request.getCookies();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     	<div class='container-fluid'>
@@ -52,42 +55,19 @@
 					<li><a href="<%=request.getContextPath()%>/donate.jsp" class="transition">Donate</a></li>
 				<%} %>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-            	<li id='loginSpace_admin' class='hidden'>
-                	<div class='container-fluid'>
-                        <div class='row'>
-                            <div class='col-xs-12'>
-                                <p style='margin-top: 1px;'><em>Welcome back,</em> <span id='navLink'>Username</span>!</p>
-                                <p style='margin-top: -15px;'><em>Last active on</em> <span id='navLink'>date</span></p>
-                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='<%=request.getContextPath()%>/donations_panel.jsp' class="transition">Donations</a></span> | <span id='navLink'><a href='<%=request.getContextPath()%>/admin-content-wp/donation_log_wp.jsp' class="transition">ACP</a></span> | <span id='navLink'>Log Out!</span></p>
-                            </div>
-                        </div>
-                	</div>
-                </li>
-                <li id='loginSpace_user' class='hidden'>
-                	<div class='container-fluid'>
-                        <div class='row'>
-                            <div class='col-xs-12'>
-                                <p style='margin-top: 1px;'><em>Welcome back,</em> <span id='navLink'>Username</span>!</p>
-                                <p style='margin-top: -15px;'><em>Last active on</em> <span id='navLink'>date</span></p>
-                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='<%=request.getContextPath()%>/donations_panel.jsp' class="transition">Your Donations</a></span> | <span id='navLink'>Log Out!</span></p>
-                            </div>
-                        </div>
-                	</div>
-                </li>
-            </ul>
+            <% if (ck.length == 1) {%>
+            <!-- LOGGED OFF -->
             <ul class="nav navbar-nav navbar-right " id='loginSpace'>
                 <li id='bLogin' onclick='logn()'><a href='javascript:void(0)'>Login</a></li>
                 <li id='aOr' class='hidden-xs hidden-sm' style='margin-left: -20px;margin-right: -20px;'><a href='javascript:void(0)'>or</a></li>
 				<li id='sgnUp'><a href='<%=request.getContextPath()%>/sign_up.jsp' class="transition">Sign Up!</a></li>
                 <li id='aLogin' class='hidden'>
-                
                 	<div class='row'>
 						<div class='col-xs-9 col-xs-offset-1'>
                             <form method="post" action="ConfirmInformation">
                               <div class="form-group">
-                                <input type="userID" class="form-control" id="loginInput_1" placeholder="User ID" name="username">
-                                <input type="password" class="form-control" id="loginInput_2" placeholder="Password" name="password">
+                                <input type="text" class="form-control loginInput_1" id="username" placeholder="User ID" name="username">
+                                <input type="password" class="form-control loginInput_1" id="password" placeholder="Password" name="password">
                               </div>
                         </div>
                         <div class='col-xs-1'>
@@ -100,6 +80,35 @@
                     
                 </li>
             </ul>
+            <% } else if (ck[3].getValue().equals("2") || ck[3].getValue().equals("1")){  %>
+            <ul class="nav navbar-nav navbar-right">
+            <!-- NAKALOGIN NA ADMIN USER -->
+            	<li id='loginSpace_admin'>
+                	<div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-xs-12'>
+                                <p style='margin-top: 1px;'><em>Welcome back,</em> <span id='navLink'>${cookie.username.value }</span>!</p>
+                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='<%=request.getContextPath()%>/donations_panel.jsp' class="transition">Donations</a></span> | <span id='navLink'><a href='<%=request.getContextPath() %>/admin-content-wp/' class="transition">ACP</a></span> | <span id='navLink'><a href='<%=request.getContextPath() %>/Logout'>Log Out!</span></a></p>
+                            </div>
+                        </div>
+                	</div>
+                </li>
+            </ul>
+            <!-- NAKALOGIN NA NORMAL USER -->
+            <% } else { %>
+            <ul class="nav navbar-nav navbar-right">
+                <li id='loginSpace_user'>
+                	<div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-xs-12'>
+                                <p style='margin-top: 1px;'><em>Welcome back,</em> <span id='navLink'>${cookie.username.value }</span>!</p>
+                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='<%=request.getContextPath()%>/donations_panel.jsp' class="transition">Your Donations</a></span> | <span id='navLink'><a href='<%=request.getContextPath()%>/Logout'>Log Out!</a></span></p>
+                            </div>
+                        </div>
+                	</div>
+                </li>
+            </ul>
+            <% }%>
 		</div>
         </div>
     </nav>

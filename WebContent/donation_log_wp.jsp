@@ -3,14 +3,6 @@
 <%@ page import = "java.util.ArrayList" %>
 <%@ page import = "com.information.personal.UserDonationBean" %>
 
-<%
-	Cookie ck[] = request.getCookies();
-	if (ck.length == 1)
-		response.sendRedirect("index.jsp");
-	else if (ck[3].getValue().equals("3"))
-		response.sendRedirect("index.jsp");
-	else {
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -82,16 +74,14 @@
                                     	<div class='row'>
                                         	<label for="fromDate" class="col-md-3 control-label">From Date</label>
                                         	<div class='col-md-9'>
-												<div class="bfh-datepicker" data-max="today" data-close="false" data-date="today" data-format="y-m-d">
-                                            	<input id="fromDate" type="text" data-name="fromDate" name='fromDate'>
+												<div class="bfh-datepicker" data-date="today"  id='fromDate' data-name="fromDate" data-format="y-m-d" style='background-color:white;'></div>
                                         </div>
                                             </div>
                                         </div>
                                         <div class='row'>
                                         	<label for="toDate" class="col-md-3 control-label">To Date</label>
                                         	<div class='col-md-9'>
-												<div class="bfh-datepicker" data-max="today" data-close="false" data-date="today" data-format="y-m-d">
-                                            	<input id="toDate" type="text" data-name="toDate" name='toDate'>
+												<div class="bfh-datepicker" data-date="today"  id='toDate' data-name="toDate" data-format="y-m-d" style='background-color:white;'></div>
                                             </div>
                                         </div>
                                         <div class='row'>
@@ -107,7 +97,7 @@
                                 <div class='wrapFlow_admin'>
                                     <table class='table table-hover table-bordered table-responsive table-condensed'>
                                         <tr>
-                                            <th class='text-center'>Surname</th>
+                                            <th class='text-center'>Username</th>
                                             <th class='text-center'>Name</th>
                                             <th class='text-center'>Donation ID</th>
                                             <th class='text-center'>Date</th>
@@ -115,7 +105,7 @@
                                             <th class='text-center'>Amount</th>
                                         </tr>
                                         <tr>
-                                            <td>[SURNAME]</td>
+                                            <td>[USERNAME]</td>
                                             <td>[NAME]</td>
                                             <td>[DONATION_ID]</td>
                                             <td>[DATE]</td>
@@ -123,7 +113,7 @@
                                             <td>[AMOUNT]</td>
                                         </tr>
                                         <tr>
-                                            <td>[SURNAME]</td>
+                                            <td>[USERNAME]</td>
                                             <td>[NAME]</td>
                                             <td>[DONATION_ID]</td>
                                             <td>[DATE]</td>
@@ -131,7 +121,7 @@
                                             <td>[AMOUNT]</td>
                                         </tr>
                                         <tr>
-                                            <td>[SURNAME]</td>
+                                            <td>[USERNAME]</td>
                                             <td>[NAME]</td>
                                             <td>[DONATION_ID]</td>
                                             <td>[DATE]</td>
@@ -139,7 +129,7 @@
                                             <td>[AMOUNT]</td>
                                         </tr>
                                         <tr>
-                                            <td>[SURNAME]</td>
+                                            <td>[USERNAME]</td>
                                             <td>[NAME]</td>
                                             <td>[DONATION_ID]</td>
                                             <td>[DATE]</td>
@@ -147,7 +137,7 @@
                                             <td>[AMOUNT]</td>
                                         </tr>
                                         <tr>
-                                            <td>[SURNAME]</td>
+                                            <td>[USERNAME]</td>
                                             <td>[NAME]</td>
                                             <td>[DONATION_ID]</td>
                                             <td>[DATE]</td>
@@ -155,7 +145,7 @@
                                             <td>[AMOUNT]</td>
                                         </tr>
                                         <tr>
-                                            <td>[SURNAME]</td>
+                                            <td>[USERNAME]</td>
                                             <td>[NAME]</td>
                                             <td>[DONATION_ID]</td>
                                             <td>[DATE]</td>
@@ -163,7 +153,7 @@
                                             <td>[AMOUNT]</td>
                                         </tr>
                                         <tr>
-                                            <td>[SURNAME]</td>
+                                            <td>[USERNAME]</td>
                                             <td>[NAME]</td>
                                             <td>[DONATION_ID]</td>
                                             <td>[DATE]</td>
@@ -171,7 +161,7 @@
                                             <td>[AMOUNT]</td>
                                         </tr>
                                         <tr>
-                                            <td>[SURNAME]</td>
+                                            <td>[USERNAME]</td>
                                             <td>[NAME]</td>
                                             <td>[DONATION_ID]</td>
                                             <td>[DATE]</td>
@@ -179,7 +169,7 @@
                                             <td>[AMOUNT]</td>
                                         </tr>
                                         <tr>
-                                            <td>[SURNAME]</td>
+                                            <td>[USERNAME]</td>
                                             <td>[NAME]</td>
                                             <td>[DONATION_ID]</td>
                                             <td>[DATE]</td>
@@ -210,4 +200,3 @@
 
 
 </html>
-<% } %>

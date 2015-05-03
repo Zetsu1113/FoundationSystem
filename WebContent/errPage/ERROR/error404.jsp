@@ -21,8 +21,8 @@
 							<div class="panel-body">
 								<p class="text-center">It looks like <strong><%=request.getAttribute("javax.servlet.forward.request_uri")%></strong> does not exist</p>
 							   	<p class="text-center">If you believe this to be an error, feel free to <a href='<%=request.getContextPath()%>/index.jsp#contact_us' class='transition'>contact the administrator</a></p>									
-								<p class="text-right"><a href='<%=request.getContextPath()%>/index.jsp' class='transition'>Click here to return to the index page.</a></p>							
 							</div>
+							<div class="panel-footer"><p class="text-right"><a href='<%=request.getContextPath()%>/index.jsp' class='transition'>Click here to return to the index page.</a></p></div>
 						</div>						
 					</div>
 				</div>
