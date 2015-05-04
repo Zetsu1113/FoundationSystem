@@ -93,8 +93,7 @@ function retVal(){
                                 <div class='row'>
                                 	<div class='col-md-6'>
                                     	<label for='birthdate'>Birthday</label>
-                                    	<div class="bfh-datepicker" data-max="today" data-close="false" data-date="today" data-format="y-m-d">
-                                            <input id="birthdate" type="text" data-name="birthdate" name='birthdate'>
+                                    	<div id='birthdate' data-name='birthdate' name='birthdate' class="bfh-datepicker" data-max="today" data-close="false" data-date="today" data-format="y-m-d">
                                         </div>
                                     </div>
                                     <div class='col-md-6'>

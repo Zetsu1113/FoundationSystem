@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.text.DecimalFormat" %>
+    
 <%
+NumberFormat formatter = new DecimalFormat("#0.00");
 	Cookie ck[] = request.getCookies();
 	if (ck.length == 1)
 		response.sendRedirect("index.jsp");
@@ -35,8 +39,8 @@
                         	<table class='table table-hover table-bordered table-responsive text-center admin-links'>
                             	<tr height='250px'>
                                 	<td style='padding: 40px 0 20px 0;'>
-                                    	<p>Welcome, <strong>&lt;admin&gt;</strong></p>
-                                        <p>Last Active on: <strong>&lt;Date&gt;</strong></p>
+                                    	<p>Welcome, <strong>${cookie.username.value }</strong></p>
+                                        <p>Last Active on: <strong><% out.print(formatter.format(session.getAttribute("total"))); %></strong></p>
                                         <p>New User: <strong>&lt;Username&gt;</strong></p>
                                         <p>Total Donations: <strong>&lt;value&gt;</strong></p>
 										<br />

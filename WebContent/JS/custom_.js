@@ -164,7 +164,7 @@ function validateDonationForm()
 	var amount = $("#amountInput").val();
 	var password1 = $("#passwordInput2").val();
 	var password2 = $("#passwordInputConfirmation2").val();
-	if (isNaN(amount))
+	if (isNaN(amount) || amount==0)
 	{
 		$("#amountChecker").removeClass("hidden");
 		return false;
@@ -200,7 +200,6 @@ function validateSignUp()
 	
 	if(uname.length<3 || uname.length>16)
 	{
-		alert(uname.length);
 		$("#UserNameCheckerInSignUp").removeClass("hidden");
 		return false;
 	}
@@ -262,7 +261,7 @@ function validateDonationLogInForm()
 		$("#passwordCheckerFirst").removeClass("hidden");
 		return false;
 	}
-	return showPanel("hello");
+	
 
 	
 	

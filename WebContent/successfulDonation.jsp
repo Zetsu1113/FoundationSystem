@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import = "com.information.personal.UserDonationBean" %>
+<%@ page import = "java.util.ArrayList" %>
+<jsp:useBean id="pbean" scope="session" class="com.information.personal.PersonalBean"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -34,11 +37,15 @@
                                 <h3>Donor:</h3>
                                 <h3>Time:</h3>
                             </div>
-                            
+      						<%
+							ArrayList<UserDonationBean> u = (ArrayList<UserDonationBean>)session.getAttribute("udbean");
+	
+							UserDonationBean last = u.get(u.size() - 1);
+							%>                      
                             <div class='col-md-5 text-right'>
-                            	<h3>&lt;Server Generated ID&gt;</h3>
-                                <h3>&lt;Name of User&gt;</h3>
-                                <h3>&lt;Server Time&gt;</h3>
+                            	<h3><%= last.getDonationID() %></h3>
+                                <h3>${pbean.lastName}, ${pbean.firstName } ${pbean.middleName} </h3>
+                                <h3><%= last.getDateDonated() %></h3>
                             </div>
                         </div>
                         <!-- For Small Screens -->
@@ -50,9 +57,9 @@
                             </div>
                             
                             <div class='col-xs-6 text-right'>
-                            	<h6>&lt;Server Generated ID&gt;</h6>
-                                <h6>&lt;Name of User&gt;</h6>
-                                <h6>&lt;Server Time&gt;</h6>
+                            	<h6><%= last.getDonationID() %></h6>
+                                <h6>${pbean.lastName}, ${pbean.firstName } ${pbean.middleName} </h6>
+                                <h6><%= last.getDateDonated() %></h6>
                             </div>
                         </div>
                     </div>

@@ -14,6 +14,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.information.process.DBConnection;
 
@@ -40,7 +41,10 @@ public class transferDonation extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+
+			HttpSession session = request.getSession(false);
 			toDatabase(request, response);
+			
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -57,13 +61,17 @@ public class transferDonation extends HttpServlet {
 			stmt1.setString(2, request.getParameter("amount"));
 			stmt1.setDate(3, new java.sql.Date(new java.util.Date().getTime()));
 			stmt1.executeUpdate();
-			stmt2 = con.prepareStatement("UPDATE UserDonation SET Donations = Donations+ " + request.getParameter("amount") + " WHERE Username = '" + ck[1].getValue() + "'");
+			stmt2 = con.prepareStatement("UPDATE UserDonation SET Donations = Donations + '" + request.getParameter("amount") + "' WHERE Username = '" + ck[1].getValue() + "'");
 			stmt2.executeUpdate();
 			stmt3 = con.prepareStatement("UPDATE UserDonation SET LastDonated =  NOW() WHERE Username = '"+ck[1].getValue()+"'");
 			stmt3.executeUpdate();
-			con.commit();
-			RequestDispatcher rd = request.getRequestDispatcher("successfulDonation.jsp");
-			rd.forward(request, response);
+			if (((String)(request.getParameter("password"))).equals(ck[2].getValue()))
+			{
+				con.commit();
+				response.sendRedirect("ConfirmInformation");
+			}
+			else
+				response.sendRedirect("login.jsp");
 			//response.sendRedirect(successfulDonation.jsp);
 		}
 		catch (Exception e)

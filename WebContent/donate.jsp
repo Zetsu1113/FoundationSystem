@@ -28,16 +28,19 @@
                 <div class='xs-md hidden-sm'>
                 	<br />
                 </div>
+                <% 
+                Cookie ck[] = request.getCookies();
+                if (ck == null || ck.length == 1) { %>
                 <div class='row'>
                 	<div class='col-md-5 col-xs-12'>
-                    	<form onsubmit="return validateDonationLogInForm()">
+                    	<form method="post" action="ConfirmInformation" onsubmit="return validateDonationLogInForm()">
                           <div class="form-group">
                             <label for="idInput">UserID</label>
-                            <input type="text" class="form-control" id="idInput" name='idInput' placeholder="User ID" required>
+                            <input type="text" class="form-control" id="idInput" name='username' placeholder="User ID" required>
                           </div>
                           <div class="form-group">
                             <label for="passwordInput">Password</label>
-                            <input type="password" class="form-control" id="passwordInput" name="passwordInput" placeholder="Enter Password" required>
+                            <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Enter Password" required>
                           </div>
                           <div class="form-group">
                             <label for="passwordInputconfirm">Confirm Password <span  class="hidden" style="color: red;" id="passwordCheckerFirst"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>Passwords don't match</span></label>
@@ -65,9 +68,10 @@
                 </div>
                 </div>
                 
+                <% } else {%>
                 <!--Logged In Donate-->
                 
-                <div class='hidden' id='donate_log'>
+                <div id='donate_log'>
                 <div class='row'>
                 	<div class='col-xs-12'>
                     	<h1 class='text-center'><em>Transfer donations straight using your account</em></h1>
@@ -83,7 +87,7 @@
                                 <label class="sr-only" for="amount">Amount (in dollars)</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">$</div>
-                                    <input type="text" class="form-control" id="amountInput" placeholder="Amount" name="amount">
+                                    <input type="text" class="form-control" id="amountInput" placeholder="Amount" name="amount" required>
                                 </div>
                                 <center><span  class="hidden" style="color: red;" id="amountChecker"><img src="MEDIA/IMAGES/xImage.png" style="height: 20px"/>Please enter valid amount</span></center>
                        
@@ -101,7 +105,7 @@
                             <h3>Security Check</h3>
 							<div class="form-group">
                             	<label for="Password">Password</label>
-                            	<input type="password" class="form-control" id="passwordInput2" placeholder="Enter Password">
+                            	<input type="password" class="form-control" name="password" id="passwordInput2" placeholder="Enter Password">
 							</div>
 							<div class="form-group">
 								<label for="Password">Confirm Password</label>
@@ -134,6 +138,7 @@
                 </div>
                 </div>
             </div>
+            <% } %>
   		</div>
     </div>
 

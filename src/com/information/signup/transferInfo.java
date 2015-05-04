@@ -74,7 +74,7 @@ public class transferInfo extends HttpServlet {
 			stmt4.setDouble(2, 0);
 			stmt4.execute();
 			con.commit();
-			//response.sendRedirect() to SUCCESS Page;
+			response.sendRedirect("successfulSignUp.jsp");
 		}
 		catch (Exception e)
 		{ 

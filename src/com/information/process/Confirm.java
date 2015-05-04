@@ -4,8 +4,8 @@ import com.information.personal.*;
 
 import java.sql.*;
 import java.io.IOException;
-
 import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -29,13 +29,23 @@ public class Confirm extends HttpServlet {
 	private ADBean a = new ADBean();
 	private ArrayList<UserDonationBean> u;
 	private double total;
+	private HttpSession session;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		Cookie ck[] = request.getCookies();
+		try {
+			session = request.getSession(false);
+			user = ck[1].getValue();
+			pass = ck[2].getValue();
+			getUserDonationLogs(request, session);
+			response.sendRedirect("successfulDonation.jsp");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
 				if(checkLogin(request, response))
 				{
@@ -44,22 +54,14 @@ public class Confirm extends HttpServlet {
 					Cookie username = new Cookie("username", user);
 					Cookie password = new Cookie("password", pass);
 					Cookie role = new Cookie("role", roles);
-					
-					username.setMaxAge(-1);
-					password.setMaxAge(-1);
-					role.setMaxAge(-1);
+
+					HttpSession session = request.getSession();
 					response.addCookie(username);
 					response.addCookie(password);
 					response.addCookie(role);
-					getInfo(user);
-					getUserDonations(user);
-					HttpSession session = request.getSession();
-					session.setAttribute("pbean", p);
-					session.setAttribute("adbean", a);
-					session.setAttribute("udbean", u);
-					session.setAttribute("total", total);
-					session.setAttribute("status", "in");
 					
+					getUserDonationLogs(request, session);
+						
 					request.getRequestDispatcher("landingPage.jsp").forward(request, response);
 				}
 				else
@@ -70,6 +72,17 @@ public class Confirm extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private void getUserDonationLogs(HttpServletRequest request, HttpSession session) throws SQLException
+	{
+		getInfo(user);
+		getUserDonations(user);
+		session.setAttribute("pbean", p);
+		session.setAttribute("adbean", a);
+		session.setAttribute("udbean", u);
+		session.setAttribute("total", total);
+		session.setAttribute("status", "in");
 	}
 	
 	public boolean checkLogin(HttpServletRequest request, HttpServletResponse response) throws SQLException

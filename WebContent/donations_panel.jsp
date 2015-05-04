@@ -2,6 +2,11 @@
 <%@ page session = "true" %>
 <%@ page import = "com.information.personal.UserDonationBean" %>
 <%@ page import = "java.util.ArrayList" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%
+NumberFormat formatter = new DecimalFormat("#0.00");
+%>
 <jsp:useBean id="pbean" scope="session" class="com.information.personal.PersonalBean"/>
 <jsp:useBean id="adbean" scope="session" class="com.information.personal.ADBean"/>
 
@@ -77,7 +82,7 @@
                                 <h4>Donation Count: </h4>
                                 <h6>${adbean.donationsCount }</h6>
                                 <h4>Total Donations: $</h4>
-                                <h6>${adbean.totalDonations }</h6>
+                                <h6><%= formatter.format(adbean.getTotalDonations()) %></h6>
                             </div>
                         </div>
                     </div>
