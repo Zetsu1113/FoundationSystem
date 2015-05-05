@@ -26,41 +26,43 @@ public class Confirm extends HttpServlet {
 	private String roles; 
 	private ResultSet rs;
 	private PersonalBean p = new PersonalBean();
+	private HttpSession session;
 	private ADBean a = new ADBean();
 	private ArrayList<UserDonationBean> u;
 	private double total;
-	private HttpSession session;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Cookie ck[] = request.getCookies();
+		
 		try {
+			Cookie ck[] = request.getCookies();
 			session = request.getSession(false);
 			user = ck[1].getValue();
 			pass = ck[2].getValue();
 			getUserDonationLogs(request, session);
-			response.sendRedirect("successfulDonation.jsp");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		response.sendRedirect("successfulDonation.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 				if(checkLogin(request, response))
 				{
-					String res[] = (request.getHeader("referer")).split("/");
-					String page = res[res.length - 1];
 					Cookie username = new Cookie("username", user);
 					Cookie password = new Cookie("password", pass);
 					Cookie role = new Cookie("role", roles);
 
-					HttpSession session = request.getSession();
+					username.setMaxAge(-1);
+					password.setMaxAge(-1);
+					role.setMaxAge(-1);
+					
+					session = request.getSession();
+					getUserDonationLogs(request, session);
 					response.addCookie(username);
 					response.addCookie(password);
 					response.addCookie(role);
-					
-					getUserDonationLogs(request, session);
 						
 					request.getRequestDispatcher("landingPage.jsp").forward(request, response);
 				}
@@ -78,6 +80,7 @@ public class Confirm extends HttpServlet {
 	{
 		getInfo(user);
 		getUserDonations(user);
+		
 		session.setAttribute("pbean", p);
 		session.setAttribute("adbean", a);
 		session.setAttribute("udbean", u);
@@ -112,6 +115,7 @@ public class Confirm extends HttpServlet {
 	
 	public void getInfo(String username) throws SQLException
 	{
+		con = new DBConnection().connect();
 		Statement st = con.createStatement();
 		rs = st.executeQuery("SELECT * FROM PersonalInformation WHERE Username = \""+username+"\"");
 		rs.next();
@@ -134,7 +138,6 @@ public class Confirm extends HttpServlet {
 		rs.next(); a.setDateJoined(rs.getDate("DateJoined"));
 		rs = st.executeQuery("SELECT Donations FROM UserDonation WHERE Username = \""+username+"\"");
 		rs.next(); a.setTotalDonations(rs.getDouble("Donations"));
-		
 		rs = st.executeQuery("SELECT SUM(Amount) FROM DonationLog");
 		rs.next();
 		total = rs.getDouble(1);
@@ -144,13 +147,13 @@ public class Confirm extends HttpServlet {
 	{
 		Statement  st = con.createStatement();
 		u = new ArrayList<UserDonationBean>();
-		rs = st.executeQuery("SELECT * From DonationLog WHERE Username = \""+username+"\"");
-		while(rs.next())
+		ResultSet rs2 = st.executeQuery("SELECT * From DonationLog WHERE Username = \""+username+"\"");
+		while(rs2.next())
 		{
 			UserDonationBean ud = new UserDonationBean();
-			ud.setDonationID(rs.getInt("DonationID"));
-			ud.setAmount(rs.getDouble("Amount"));
-			ud.setDateDonated(rs.getDate("DateDonated"));
+			ud.setDonationID(rs2.getInt("DonationID"));
+			ud.setAmount(rs2.getDouble("Amount"));
+			ud.setDateDonated(rs2.getDate("DateDonated"));
 			u.add(ud);
 		}
 	}

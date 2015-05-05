@@ -57,7 +57,7 @@ NumberFormat formatter = new DecimalFormat("#0.00");
                             <div class='col-md-2 text-right'>
                             	<h4>${adbean.dateJoined }</h4>
                                 <h4>${adbean.donationsCount }</h4>
-                                <h4>${adbean.totalDonations }</h4>
+                                <h4><% out.println(formatter.format(adbean.getTotalDonations())); %></h4>
                             </div>
                         </div>
                         <!-- For Small Screens -->
@@ -82,7 +82,7 @@ NumberFormat formatter = new DecimalFormat("#0.00");
                                 <h4>Donation Count: </h4>
                                 <h6>${adbean.donationsCount }</h6>
                                 <h4>Total Donations: $</h4>
-                                <h6><%= formatter.format(adbean.getTotalDonations()) %></h6>
+                                <h6><% out.println(formatter.format(adbean.getTotalDonations())); %></h6>
                             </div>
                         </div>
                     </div>

@@ -41,8 +41,6 @@ public class transferDonation extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-
-			HttpSession session = request.getSession(false);
 			toDatabase(request, response);
 			
 		} catch (SQLException | ClassNotFoundException e) {
@@ -51,11 +49,12 @@ public class transferDonation extends HttpServlet {
 	}
 	private void toDatabase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException
 	{
-		Cookie ck[] = request.getCookies();
 		Connection con = new DBConnection().connect();
 		try
 		{
+			Cookie ck[] = request.getCookies();
 			PreparedStatement stmt1, stmt2, stmt3;
+
 			stmt1 = con.prepareStatement("INSERT INTO DonationLog (DonationID, Username, Amount, DateDonated) VALUES (null,?,?,?)");
 			stmt1.setString(1, ck[1].getValue());
 			stmt1.setString(2, request.getParameter("amount"));
@@ -65,14 +64,18 @@ public class transferDonation extends HttpServlet {
 			stmt2.executeUpdate();
 			stmt3 = con.prepareStatement("UPDATE UserDonation SET LastDonated =  NOW() WHERE Username = '"+ck[1].getValue()+"'");
 			stmt3.executeUpdate();
-			if (((String)(request.getParameter("password"))).equals(ck[2].getValue()))
+			if (((request.getParameter("password"))).equals(ck[2].getValue()))
 			{
+				//RequestDispatcher rd = request.getRequestDispatcher("ConfirmInformation");
+				//rd.forward(request, response);
 				con.commit();
 				response.sendRedirect("ConfirmInformation");
 			}
 			else
+			{
+				con.rollback();
 				response.sendRedirect("login.jsp");
-			//response.sendRedirect(successfulDonation.jsp);
+			}
 		}
 		catch (Exception e)
 		{ 
@@ -83,7 +86,6 @@ public class transferDonation extends HttpServlet {
 		finally
 		{
 			con.close();
-			
 		}
 
 }
