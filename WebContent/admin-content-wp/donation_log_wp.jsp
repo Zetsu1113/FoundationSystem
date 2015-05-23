@@ -106,7 +106,8 @@ NumberFormat formatter = new DecimalFormat("#0.00");
                                             <th class='text-center'>Donated To</th>
                                             <th class='text-center'>Amount</th>
                                         </tr>
-                                        
+
+<!-- retrieves the details from the beans (retrieved from the ReturnInfo servlet) -->                                        
                                         <%
                                         ArrayList<UserDonationBean> u = (ArrayList<UserDonationBean>)session.getAttribute("query");
                                         ArrayList<PersonalBean> p = (ArrayList<PersonalBean>)session.getAttribute("names");

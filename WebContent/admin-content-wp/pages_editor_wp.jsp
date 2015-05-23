@@ -3,7 +3,9 @@
     
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.text.DecimalFormat" %>
-    
+
+<!-- used for editing pages within the site -->
+<!-- the number formatter is used for formatting the total amount donated -->    
 <%
 NumberFormat formatter = new DecimalFormat("#0.00");
 	Cookie ck[] = request.getCookies();

@@ -15,10 +15,11 @@ import java.sql.*;
  * Servlet implementation class transferInfo
  */
 @WebServlet(description = "transfers contents of bean to database", urlPatterns = { "/informationTransfer" })
-public class transferInfo extends HttpServlet {
+public class transferInfo extends HttpServlet { // used for signing up
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// used for navigating/staying up-to-date with the database 
 		try {
 			toDatabase(request, response);
 		} catch (SQLException | ClassNotFoundException e) {
@@ -30,6 +31,7 @@ public class transferInfo extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// adds the records to tables that contains certain user information
 		try {
 			toDatabase(request, response);
 		} catch (SQLException | ClassNotFoundException e) {
@@ -39,6 +41,8 @@ public class transferInfo extends HttpServlet {
 
 	private void toDatabase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException
 	{
+		// transfers the information in the form to the database
+		// transfers to: PersonalInformation, AddressInformation, AccountDetails, UserDonations
 		Connection con = new DBConnection().connect();
 		try
 		{

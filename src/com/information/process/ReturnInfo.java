@@ -21,8 +21,8 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class ReturnInfo
  */
-@WebServlet("/informationReturn")
-public class ReturnInfo extends HttpServlet {
+@WebServlet("/informationReturn") 
+public class ReturnInfo extends HttpServlet { // returns information for the overall donation panel (for administrators only)
 	private static final long serialVersionUID = 1L;
 	private Connection con = new DBConnection().connect();
 	private ArrayList<UserDonationBean> u;
@@ -34,6 +34,7 @@ public class ReturnInfo extends HttpServlet {
 	private ResultSet rs;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// used for getting donations when navigating to the page
 		try
 		{
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -55,6 +56,7 @@ public class ReturnInfo extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// used for displaying queries made by the administrator
 		try
 		{
 			HttpSession session = request.getSession(false);
@@ -75,6 +77,7 @@ public class ReturnInfo extends HttpServlet {
 	
 	protected void getLog() throws SQLException
 	{
+		// gets the donation logs
 		Statement st = con.createStatement();
 		ResultSet rs2;
 		if (username.equals("") && amount.equals(""))

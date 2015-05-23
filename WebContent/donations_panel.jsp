@@ -104,6 +104,7 @@ NumberFormat formatter = new DecimalFormat("#0.00");
                                 <th class='text-center'>Donated To</th>
                                 <th class='text-center'>Amount</th>
                             </tr>
+<!-- retrieves the information obtained from the ReturnInfo servlet -->                            
                             <%
                             	ArrayList<UserDonationBean> u = (ArrayList<UserDonationBean>)session.getAttribute("udbean");
                             	for (int i = 0; i < u.size(); i++)

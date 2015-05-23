@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class ReturnUsers
  */
 @WebServlet("/UserReturn")
-public class ReturnUsers extends HttpServlet {
+public class ReturnUsers extends HttpServlet { // gets the all user details for admin viewing
 	private static final long serialVersionUID = 1L;
 	private ArrayList<PersonalBean> Upb;
 	private ArrayList<ADBean> Uad;
@@ -35,6 +35,7 @@ public class ReturnUsers extends HttpServlet {
 	private String fromDate;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// used for staying up-to-date when navigating to the page
 		try {
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			java.util.Date today = Calendar.getInstance().getTime();
@@ -59,6 +60,7 @@ public class ReturnUsers extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// used for querying/filtering certain users
 		try {
 			HttpSession session = request.getSession(false);
 			
@@ -81,6 +83,7 @@ public class ReturnUsers extends HttpServlet {
 	
 	private void getUserDetails() throws SQLException
 	{
+		// gets important details from the database
 		Upb = new ArrayList<>();
 		Uad = new ArrayList<>();
 		ADBean a;

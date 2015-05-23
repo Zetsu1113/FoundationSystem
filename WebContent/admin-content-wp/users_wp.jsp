@@ -7,6 +7,8 @@
 <%@ page import="com.information.personal.ADBean" %>
 <%@ page import="com.information.personal.PersonalBean" %>
 
+<!-- used for viewing all the users of the site -->
+<!-- for formatting the total donations to the foundation -->
 <%
 NumberFormat formatter = new DecimalFormat("#0.00");
 	Cookie ck[] = request.getCookies();
@@ -112,6 +114,7 @@ NumberFormat formatter = new DecimalFormat("#0.00");
 							<div class='row'>
 								<div class='col-xs-12 center-block'>
 									<div class='wrapFlow_admin' style='padding: 5px;'>
+<!-- retrieves the information obtained from the ReturnUsers servlet -->
 							<%
                             	ArrayList<ADBean> a = (ArrayList<ADBean>)session.getAttribute("Uad");
                                 ArrayList<PersonalBean> p = (ArrayList<PersonalBean>)session.getAttribute("Upb");

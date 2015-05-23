@@ -2,7 +2,7 @@ package com.information.process;
 import java.sql.*;
 
 public class DBConnection {
-	
+	// establishes the connection to the database
 	public Connection connect(){
 		try
 		{

@@ -18,7 +18,8 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class Confirm
  */
 @WebServlet(description = "confirms entry from database", urlPatterns = { "/ConfirmInformation" })
-public class Confirm extends HttpServlet {
+public class Confirm extends HttpServlet { // used for confirming the user-state and logging in
+	// will also retrieve donation logs if the log in is valid
 	private static final long serialVersionUID = 1L;
 	private Connection con;
 	private String user;
@@ -32,6 +33,8 @@ public class Confirm extends HttpServlet {
 	private double total;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// used to confirm the persistence of the log-in when navigating (only used in valuable pages including
+		// the donate page where another validation is needed
 		con = new DBConnection().connect();
 		try {
 			Cookie ck[] = request.getCookies();
@@ -47,10 +50,12 @@ public class Confirm extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// checking the username and password when logging in
 		con = new DBConnection().connect();
 		try {
 				if(checkLogin(request, response))
 				{
+					// if login is successful, cookies will be created for persistence
 					Cookie username = new Cookie("username", user);
 					Cookie password = new Cookie("password", pass);
 					Cookie role = new Cookie("role", roles);
@@ -59,6 +64,7 @@ public class Confirm extends HttpServlet {
 					password.setMaxAge(-1);
 					role.setMaxAge(-1);
 					
+					// a session will be used for retrieving  the donation logs of the user
 					session = request.getSession();
 					getUserDonationLogs(request, session);
 					response.addCookie(username);
@@ -79,6 +85,7 @@ public class Confirm extends HttpServlet {
 	
 	private void getUserDonationLogs(HttpServletRequest request, HttpSession session) throws SQLException
 	{
+		// adding the donation logs to the session object for page retrieval
 		getInfo(user);
 		getUserDonations(user);
 		
@@ -91,6 +98,7 @@ public class Confirm extends HttpServlet {
 	
 	public boolean checkLogin(HttpServletRequest request, HttpServletResponse response) throws SQLException
 	{
+		// checks log in
 		user = request.getParameter("username");
 		pass = request.getParameter("password");
 		Statement st = con.createStatement();
@@ -116,6 +124,7 @@ public class Confirm extends HttpServlet {
 	
 	public void getInfo(String username) throws SQLException
 	{
+		// retrieves personal information  from the user that will be used
 		con = new DBConnection().connect();
 		Statement st = con.createStatement();
 		rs = st.executeQuery("SELECT * FROM PersonalInformation WHERE Username = \""+username+"\"");
@@ -146,6 +155,7 @@ public class Confirm extends HttpServlet {
 	
 	public void getUserDonations(String username) throws SQLException
 	{
+		// retrieves all user donations
 		Statement  st = con.createStatement();
 		u = new ArrayList<UserDonationBean>();
 		ResultSet rs2 = st.executeQuery("SELECT * From DonationLog WHERE Username = \""+username+"\"");

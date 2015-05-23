@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class Deletion
  */
 @WebServlet("/Delete")
-public class Deletion extends HttpServlet {
+public class Deletion extends HttpServlet { // deletes users (can only be used by administrators)
 	private static final long serialVersionUID = 1L;
 
 	
@@ -23,6 +23,7 @@ public class Deletion extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// deletion by marking
 		String username = request.getParameter("username");
 		Connection con = new DBConnection().connect();
 		try {

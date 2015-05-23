@@ -1,6 +1,6 @@
 package com.information.personal;
 
-public class PersonalBean {
+public class PersonalBean { // Bean used for transactions concerning personal information
 	private String username;
 	private String password;
 	private String lastName;

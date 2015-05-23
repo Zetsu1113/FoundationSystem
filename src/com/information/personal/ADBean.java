@@ -1,6 +1,6 @@
 package com.information.personal;
 
-public class ADBean {
+public class ADBean { // Bean used for transactions related to account details
 	private java.util.Date dateJoined;
 	private int donationsCount;
 	private double totalDonations;

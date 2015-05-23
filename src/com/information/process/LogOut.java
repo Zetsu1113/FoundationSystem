@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class LogOut
  */
 @WebServlet("/Logout")
-public class LogOut extends HttpServlet {
+public class LogOut extends HttpServlet { // called when logging out (deletes cookies)
 	private static final long serialVersionUID = 1L;
 	private Cookie []ck;
 	/**

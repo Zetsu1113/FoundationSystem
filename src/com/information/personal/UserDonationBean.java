@@ -1,6 +1,6 @@
 package com.information.personal;
 
-public class UserDonationBean {
+public class UserDonationBean { // Bean used for transactions concerning total user donations since creation of account
 	private int donationID;
 	private double amount;
 	private String username;
