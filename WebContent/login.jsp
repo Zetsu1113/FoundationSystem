@@ -22,15 +22,7 @@
 							<h1 class="panel-title">User Login</h1>
 						</div>
 						<div class="panel-body">
-						<% 
-								String header = request.getHeader("referer");
-								String result[] = header.split("/");
-								
-								if (!result[result.length-1].equals("successfulSignUp.jsp"))
-								{
-						%>
 							<div class="alert alert-danger" role="alert"><strong>Oops!</strong> Invalid Username/Password</div>
-						<% } %>
 							<form class='form-horizontal' method="post" action="ConfirmInformation">
 								<div class='form-group'>
 									<label for="username" class="col-md-2 control-label">Username</label>
