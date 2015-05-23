@@ -88,7 +88,7 @@
                         <div class='row'>
                             <div class='col-xs-12'>
                                 <p style='margin-top: 1px;'><em>Welcome back,</em> <span id='navLink'>${cookie.username.value }</span>!</p>
-                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='<%=request.getContextPath()%>/donations_panel.jsp' class="transition">Donations</a></span> | <span id='navLink'><a href='<%=request.getContextPath() %>/admin-content-wp/donation_log_wp.jsp' class="transition">ACP</a></span> | <span id='navLink'><a href='<%=request.getContextPath() %>/Logout'>Log Out!</span></a></p>
+                                <p style='margin-top: -15px;margin-bottom: inherit;'><span id='navLink'><a href='<%=request.getContextPath()%>/donations_panel.jsp' class="transition">Donations</a></span> | <span id='navLink'><a href='<%=request.getContextPath() %>/informationReturn' class="transition">ACP</a></span> | <span id='navLink'><a href='<%=request.getContextPath() %>/Logout'>Log Out!</span></a></p>
                             </div>
                         </div>
                 	</div>

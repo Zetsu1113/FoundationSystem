@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(description = "confirms entry from database", urlPatterns = { "/ConfirmInformation" })
 public class Confirm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Connection con = new DBConnection().connect();
+	private Connection con;
 	private String user;
 	private String pass;
 	private String roles; 
@@ -32,7 +32,7 @@ public class Confirm extends HttpServlet {
 	private double total;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		con = new DBConnection().connect();
 		try {
 			Cookie ck[] = request.getCookies();
 			session = request.getSession(false);
@@ -47,6 +47,7 @@ public class Confirm extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		con = new DBConnection().connect();
 		try {
 				if(checkLogin(request, response))
 				{

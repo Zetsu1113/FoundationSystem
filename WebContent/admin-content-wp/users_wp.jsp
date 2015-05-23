@@ -3,6 +3,9 @@
 	
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.information.personal.ADBean" %>
+<%@ page import="com.information.personal.PersonalBean" %>
 
 <%
 NumberFormat formatter = new DecimalFormat("#0.00");
@@ -49,25 +52,16 @@ NumberFormat formatter = new DecimalFormat("#0.00");
 											Welcome, <strong>${cookie.username.value }</strong>
 										</p>
 										<p>
-											Last Active on: <strong>&lt;Date&gt;</strong>
-										</p>
-										<p>
-											New User: <strong>&lt;Username&gt;</strong>
-										</p>
-										<p>
 											Total Donations: <strong><% out.print(formatter.format(session.getAttribute("total"))); %></strong>
 										</p> <br />
-										<p>
-											You have <strong>&lt;int&gt;</strong> new site messages
-										</p>
 									</td>
 								</tr>
 								<tr>
-									<td><a href='donation_log_wp.jsp'><h3>DONATION
+									<td><a href="<%= request.getContextPath() %>/informationReturn"><h3>DONATION
 												LOG</h3></a></td>
 								</tr>
 								<tr>
-									<td class='active'><a href='#'><h3>USERS</h3></a></td>
+									<td class='active'><a href="<%= request.getContextPath() %>/UserReturn"><h3>USERS</h3></a></td>
 								</tr>
 								<tr>
 									<td><a href='pages_editor_wp.jsp'><h3>PAGES</h3></a></td>
@@ -76,20 +70,13 @@ NumberFormat formatter = new DecimalFormat("#0.00");
 						</div>
 						<div class='col-md-9'>
 							<div class='row'>
-								<form class='form-horizontal'>
+								<form class='form-horizontal' action="<%= request.getContextPath() %>/UserReturn" method="post">
 									<div class="col-md-6 form-group">
 										<div class='row'>
 											<label for="username" class="col-md-3 control-label">Username</label>
 											<div class="col-md-9">
 												<input type="text" class="form-control" id="username"
 													name="username" placeholder="User Name">
-											</div>
-										</div>
-										<div class='row'>
-											<label for="amount" class="col-md-3 control-label">Amount</label>
-											<div class="col-md-9">
-												<input type="amount" class="form-control" id="amount"
-													placeholder="Amount">
 											</div>
 										</div>
 									</div>
@@ -125,52 +112,48 @@ NumberFormat formatter = new DecimalFormat("#0.00");
 							<div class='row'>
 								<div class='col-xs-12 center-block'>
 									<div class='wrapFlow_admin' style='padding: 5px;'>
+							<%
+                            	ArrayList<ADBean> a = (ArrayList<ADBean>)session.getAttribute("Uad");
+                                ArrayList<PersonalBean> p = (ArrayList<PersonalBean>)session.getAttribute("Upb");
+                                if (a != null)
+	                            for (int i = 0; i < a.size(); i++)
+	                            {
+									if (i % 3 == 0)
+									{
+							%>
 										<div class='row'>
-											<ul class='list-inline'>
+											<ul class='list-inline'>		
+							<% 		} 
+							%>
 												<div class='col-md-4'>
 													<li class='list-group-item' id='user_box'>
 														<ul class='list-unstyled'>
-															<li>Name: <strong>&lt;surname&gt;</strong>,<strong>&lt;name&gt;</strong></li>
-															<li>Username: <strong>&lt;user_ID&gt;</strong></li>
-															<li>Joined Date: <strong>&lt;date&gt;</strong></li>
-															<li>Amount Donated: <strong>&lt;amount&gt;</strong></li>
-															<li>E-Mail Address: <strong>&lt;email&gt;</strong></li>
-															<li>Mailing Address: <strong>&lt;mailing&gt;</strong></li>
+												
+							<%			
+															String username = p.get(i).getUsername();
+															out.println("<li>Name: <strong>" + p.get(i).getLastName() + ", " + p.get(i).getFirstName() + "</strong></li>");
+															out.println("<li>Username: <strong>" + username + "</strong></li>");
+															out.println("<li>Joined Date: <strong>" + a.get(i).getDateJoined() + "</strong></li>");
+															out.println("<li>Total Donations: <strong>" + a.get(i).getTotalDonations() + "</strong></li>");
+															out.println("<li>Email: <strong>" + p.get(i).getEmail() + "</strong></li>"); 
+							%>
 															<br />
-															<li><button type="button" class="btn btn-default">DELETE</button></li>
+															<form method="post" action="<%= request.getContextPath() %>/Delete">
+																<input name="username" type="hidden" value="<%= username %>"/>
+																<button type="submit" class="btn btn-default">Delete</button>
+															</form>
 														</ul>
 													</li>
 												</div>
-												<div class='col-md-4'>
-													<li class='list-group-item' id='user_box'>
-														<ul class='list-unstyled'>
-															<li>Name: <strong>&lt;surname&gt;</strong>,<strong>&lt;name&gt;</strong></li>
-															<li>Username: <strong>&lt;user_ID&gt;</strong></li>
-															<li>Joined Date: <strong>&lt;date&gt;</strong></li>
-															<li>Amount Donated: <strong>&lt;amount&gt;</strong></li>
-															<li>E-Mail Address: <strong>&lt;email&gt;</strong></li>
-															<li>Mailing Address: <strong>&lt;mailing&gt;</strong></li>
-															<br />
-															<li><button type="button" class="btn btn-default">DELETE</button></li>
-														</ul>
-													</li>
-												</div>
-												<div class='col-md-4'>
-													<li class='list-group-item' id='user_box'>
-														<ul class='list-unstyled'>
-															<li>Name: <strong>&lt;surname&gt;</strong>,<strong>&lt;name&gt;</strong></li>
-															<li>Username: <strong>&lt;user_ID&gt;</strong></li>
-															<li>Joined Date: <strong>&lt;date&gt;</strong></li>
-															<li>Amount Donated: <strong>&lt;amount&gt;</strong></li>
-															<li>E-Mail Address: <strong>&lt;email&gt;</strong></li>
-															<li>Mailing Address: <strong>&lt;mailing&gt;</strong></li>
-															<br />
-															<li><button type="button" class="btn btn-default">DELETE</button></li>
-														</ul>
-													</li>
-												</div>
-											</ul>
-										</div>
+							<%
+									if (i % 3 == 2)
+									{	
+							%>
+												</ul>
+											</div>
+							<%		}
+	                            }
+                            %>
 									</div>
 								</div>
 							</div>
@@ -180,7 +163,7 @@ NumberFormat formatter = new DecimalFormat("#0.00");
 			</div>
 		</div>
 	</div>
-							</div>
+	</div>
 	</div>
 
 	<jsp:include page="../footerBar.html" />

@@ -40,21 +40,18 @@ NumberFormat formatter = new DecimalFormat("#0.00");
                             	<tr height='250px'>
                                 	<td style='padding: 40px 0 20px 0;'>
                                     	<p>Welcome, <strong>${cookie.username.value }</strong></p>
-                                        <p>Last Active on: <strong><% out.print(formatter.format(session.getAttribute("total"))); %></strong></p>
-                                        <p>New User: <strong>&lt;Username&gt;</strong></p>
-                                        <p>Total Donations: <strong>&lt;value&gt;</strong></p>
+                                        <p>Total Donations: <strong><% out.print(formatter.format(session.getAttribute("total"))); %></strong></p>
 										<br />
-                                        <p>You have <strong>&lt;int&gt;</strong> new site messages</p>
                                     </td>
                                 </tr>
                                 <tr>
                                 	<td>
-                                    	<a href='donation_log_wp.jsp'><h3>DONATION LOG</h3></a>
+                                    	<a href="<%= request.getContextPath() %>/informationReturn"><h3>DONATION LOG</h3></a>
                                     </td>
                                 </tr>
                                 <tr>
                                 	<td>
-                                    	<a href='users_wp.jsp'><h3>USERS</h3></a>
+                                    	<a href="<%= request.getContextPath() %>/UserReturn"><h3>USERS</h3></a>
                                     </td>
                                 </tr>
                                 <tr>

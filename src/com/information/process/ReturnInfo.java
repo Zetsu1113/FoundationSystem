@@ -2,7 +2,10 @@ package com.information.process;
 import com.information.personal.PersonalBean;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.information.personal.UserDonationBean;
 
@@ -31,7 +34,24 @@ public class ReturnInfo extends HttpServlet {
 	private ResultSet rs;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		try
+		{
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			java.util.Date today = Calendar.getInstance().getTime();
+			HttpSession session = request.getSession(false);
+			username = "";
+			amount = "";
+			toDate = df.format(today);
+			fromDate = "2000-1-1";
+
+			getLog();
+			session.setAttribute("query", u);
+			session.setAttribute("names", p);
+			response.sendRedirect(request.getContextPath() + "/admin-content-wp/donation_log_wp.jsp");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
