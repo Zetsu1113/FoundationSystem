@@ -42,6 +42,11 @@
 						<%}else { %>
                         	<li><a href="<%=request.getContextPath()%>/Projects/project_2.jsp" class="transition">Adopted Families' Tambo Making Project</a></li>
 						<%} %>
+						<% if(request.getRequestURI().equals(request.getContextPath()+"/Projects/project_3.jsp")){ %>
+                        	<li class='active'><a href="#">Project 3</a></li>
+						<%}else { %>
+                        	<li><a href="<%=request.getContextPath()%>/Projects/project_3.jsp" class="transition">Project 3</a></li>
+						<%} %>
                     </ul>
                 </li>
 				<% if(request.getRequestURI().equals(request.getContextPath()+"/donate.jsp")){ %>
