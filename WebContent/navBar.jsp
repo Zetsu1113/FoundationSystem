@@ -28,7 +28,6 @@
                 		<li><a href="<%=request.getContextPath()%>/index.jsp#contactUs" class="active transition">Contact Us</a></li>
                <%} %>
                         	
-                
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Projects <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
