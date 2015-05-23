@@ -7,6 +7,10 @@ Cancio, Kyle Cedrick (Graphics and Layout Designer)
 Rosalado, Isabela Marie (User Interaction Designer)
 Suarez, Jessie James (Back-end Developer)
 
+Version 3.3
+- finished all admin functionalities
+- minor bug fixes
+
 Version 2.4
 Back-End:
 - pages were converted to JSP
