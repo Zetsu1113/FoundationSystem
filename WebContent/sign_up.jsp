@@ -124,7 +124,7 @@ function retVal(){
                                 <div class='row'>
                                 	<div class='col-md-12'>
                                     	<label for="address">Home Address</label>
-                                		<input type="text" class="form-control" id="address" placeholder="Last Name" name='Address' required>
+                                		<input type="text" class="form-control" id="address" placeholder="Home Address" name='Address' required>
                                         </select>
                                     </div>
                                 </div>
